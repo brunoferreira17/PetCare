@@ -1,4 +1,4 @@
-package petcare;
+package petcare.users;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package petcare;
+package petcare.users;
 
 import java.io.Serializable;
 
@@ -21,7 +21,7 @@ public class Utilizador implements Serializable {
         this.localidade = localidade;
     }
 
-    // Getters e Setters (métodos de acesso aos atributos)
+    // Getters e Setters
     public String getNome()
     {
         return nome;

@@ -1,4 +1,4 @@
-package petcare;
+package petcare.users;
 
 public enum TipoFuncionario
 {
