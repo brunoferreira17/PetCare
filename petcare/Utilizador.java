@@ -1,6 +1,9 @@
-package PetCare;
-public class Utilizador  {
-    // Atributos comuns a clientes, prestadores de serviço e administradores
+package petcare;
+
+import java.io.Serializable;
+
+public class Utilizador implements Serializable {
+    // Atributos comuns a clientes, prestadores de serviços, Funcionarios e Adminstradores
     private String nome;
     private String numeroCC;
     private String numeroFiscal;
@@ -19,51 +22,63 @@ public class Utilizador  {
     }
 
     // Getters e Setters (métodos de acesso aos atributos)
-    public String getNome() {
+    public String getNome()
+    {
         return nome;
     }
 
-    public void setNome(String nome) {
+    public void setNome(String nome)
+    {
         this.nome = nome;
     }
 
-    public String getNumeroCC() {
+    public String getNumeroCC()
+    {
         return numeroCC;
     }
 
-    public void setNumeroCC(String numeroCC) {
+    public void setNumeroCC(String numeroCC)
+    {
         this.numeroCC = numeroCC;
     }
 
-    public String getNumeroFiscal() {
+    public String getNumeroFiscal()
+    {
         return numeroFiscal;
     }
 
-    public void setNumeroFiscal(String numeroFiscal) {
+    public void setNumeroFiscal(String numeroFiscal)
+    {
         this.numeroFiscal = numeroFiscal;
     }
 
-    public String getTelefone() {
+    public String getTelefone()
+    {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(String telefone)
+    {
         this.telefone = telefone;
     }
 
-    public String getMorada() {
+    public String getMorada()
+    {
         return morada;
     }
 
-    public void setMorada(String morada) {
+    public void setMorada(String morada)
+    {
         this.morada = morada;
     }
 
-    public String getLocalidade() {
+    public String getLocalidade()
+    {
         return localidade;
     }
 
-    public void setLocalidade(String localidade) {
+    public void setLocalidade(String localidade)
+    {
         this.localidade = localidade;
     }
 }
