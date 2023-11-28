@@ -1,5 +1,7 @@
 package petcare;
 
+import petcare.users.Utilizador;
+
 import java.util.Scanner;
 public class Menus
 {
@@ -21,6 +23,8 @@ public class Menus
                 Menus.login();
                 break;
             case 2:
+                Menus.registo();
+                break;
 
 
 
@@ -37,8 +41,38 @@ public class Menus
         String numerofiscal = login.nextLine();
         System.out.println("Insira o sua Password:");
         String password = login.nextLine();
+
     }
 
-    public static void registo
+    public static void registo()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        Recursos.clearScreen();
+        System.out.println("===== Registro de Pessoa =====");
+
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Número de Cartão de Cidadão: ");
+        String numeroCC = scanner.nextLine();
+
+        System.out.print("Número Fiscal: ");
+        String numeroFiscal = scanner.nextLine();
+
+        System.out.print("Telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.print("Morada: ");
+        String morada = scanner.nextLine();
+
+        System.out.print("Localidade: ");
+        String localidade = scanner.nextLine();
+
+        System.out.print("Localidade: ");
+        String localidade = scanner.nextLine();
+
+
+    }
 
 }
