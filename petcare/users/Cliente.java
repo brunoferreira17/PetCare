@@ -8,16 +8,23 @@ import java.util.List;
 
 public class Cliente extends Utilizador
 {
-
+    List<Marcacao> marcacoes;
 
     //Construtor
     public Cliente(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade)
     {
         super(nome, numeroCC, numeroFiscal, telefone, morada, localidade);
-        List<Marcacao> marcacoes = new ArrayList<>();
+         this.marcacoes = new ArrayList<>();
     }
 
-    // Getters e Setters e Adiçao
+    // Getters e Setters
+
+
+    //Metodo para Adicionar Marcaçao
+    public void adicionarMarcacao(Marcacao marcacao)
+    {
+        this.marcacoes.add(marcacao);
+    }
 
 
 }

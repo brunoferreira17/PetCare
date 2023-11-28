@@ -22,4 +22,5 @@ public class Funcionario extends Utilizador implements Serializable
         this.tipofuncionario = tipofuncionario;
     }
 
+
 }
