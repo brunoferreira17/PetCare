@@ -2,11 +2,13 @@ package petcare;
 
 public class Local
 {
+    //Atributos do Local
     private String morada;
     private String localidade;
     private String contacto;
     private TipoServiço tiposerviço;
 
+    //Construtor
     public Local (String morada, String localidade, String contacto, TipoServiço tiposerviço)
     {
         this.morada = morada;
@@ -14,6 +16,7 @@ public class Local
         this.contacto = contacto;
     }
 
+    //Getters e Setters
     public String getMorada()
     {
         return morada;

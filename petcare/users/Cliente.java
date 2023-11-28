@@ -11,14 +11,11 @@ public class Cliente extends Utilizador
     List<Marcacao> marcacoes;
 
     //Construtor
-    public Cliente(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade)
+    public Cliente(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade,String password)
     {
-        super(nome, numeroCC, numeroFiscal, telefone, morada, localidade);
+        super(nome, numeroCC, numeroFiscal, telefone, morada, localidade, password);
          this.marcacoes = new ArrayList<>();
     }
-
-    // Getters e Setters
-
 
     //Metodo para Adicionar Marcaçao
     public void adicionarMarcacao(Marcacao marcacao)

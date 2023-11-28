@@ -4,14 +4,17 @@ import java.io.Serializable;
 
 public class Funcionario extends Utilizador implements Serializable
 {
+    //Atributos apenas do Funcionario
     private TipoFuncionario tipofuncionario;
 
-    public Funcionario(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade,TipoFuncionario tipofuncionario)
+    //Construtor
+    public Funcionario(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade,String password, TipoFuncionario tipofuncionario)
     {
-        super(nome, numeroCC, numeroFiscal, telefone, morada, localidade);
+        super(nome, numeroCC, numeroFiscal, telefone, morada, localidade, password);
         this.tipofuncionario = tipofuncionario;
     }
 
+    //Getters e Setters
     public TipoFuncionario getTipofuncionario()
     {
         return tipofuncionario;

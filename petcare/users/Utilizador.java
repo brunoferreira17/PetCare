@@ -10,15 +10,18 @@ public class Utilizador implements Serializable {
     private String telefone;
     private String morada;
     private String localidade;
+    private String password;
 
     // Construtor
-    public Utilizador(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade) {
+    public Utilizador(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade,String password)
+    {
         this.nome = nome;
         this.numeroCC = numeroCC;
         this.numeroFiscal = numeroFiscal;
         this.telefone = telefone;
         this.morada = morada;
         this.localidade = localidade;
+        this.password = password;
     }
 
     // Getters e Setters
@@ -80,5 +83,15 @@ public class Utilizador implements Serializable {
     public void setLocalidade(String localidade)
     {
         this.localidade = localidade;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public  void setPassword(String password)
+    {
+        this.password = password;
     }
 }

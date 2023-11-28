@@ -13,6 +13,32 @@ public class Menus
         System.out.println("Escolha a sua opção:");
     }
 
-    public static void
+    public static void MenuLoginOptions (int option)
+    {
+        switch (option)
+        {
+            case 1:
+                Menus.login();
+                break;
+            case 2:
+
+
+
+        }
+
+    }
+
+    public static void login()
+    {
+        Scanner login = new Scanner(System.in);
+
+        Recursos.clearScreen();
+        System.out.println("Insira o seu NumeroFiscal:");
+        String numerofiscal = login.nextLine();
+        System.out.println("Insira o sua Password:");
+        String password = login.nextLine();
+    }
+
+    public static void registo
 
 }
