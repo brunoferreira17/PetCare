@@ -17,11 +17,11 @@ public class Utilizador implements Serializable {
     {
         this.nome = nome;
         this.numeroCC = numeroCC;
+        this.password = password;
         this.numeroFiscal = numeroFiscal;
         this.telefone = telefone;
         this.morada = morada;
         this.localidade = localidade;
-        this.password = password;
     }
 
     // Getters e Setters
