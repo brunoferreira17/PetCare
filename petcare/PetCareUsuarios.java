@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class PetCareUsuarios
 {
      //Mapa onde vao ficar todos os usuarios.
-     private Map<String, Utilizador> utilizadores = new HashMap<>();
+     private static Map<String, Utilizador> utilizadores = new HashMap<>();
 
 
      //Metodo que Adicionará Utilizador Registado ao Mapa
@@ -26,7 +26,7 @@ public class PetCareUsuarios
      }
 
      //Metodo usado para remmover Utilizadores.
-     public void RemoverUsuario()
+     public void RemoverUtilizador()
      {
           Scanner scanner = new Scanner(System.in);
 
@@ -37,4 +37,36 @@ public class PetCareUsuarios
 
      }
 
+     //Metodo usado para Exibir Informaçao dos Utilizadores.
+     public void ExibirUtilizador()
+     {
+          Scanner scanner = new Scanner(System.in);
+
+          System.out.println("Insira o Numero do Cartao de Cidadao do Utilizador que deseja Ver:");
+          String numeroCC = scanner.nextLine();
+          Utilizador utilizador = utilizadores.get(numeroCC);
+
+          System.out.println("===== Informaçao da Pessoa =====");
+
+          System.out.println("Nome: " + utilizador.getNome());
+
+          System.out.println("Número de Cartão de Cidadão: " + utilizador.getNumeroCC());
+
+          System.out.println("Número Fiscal: " + utilizador.getNumeroFiscal());
+
+          System.out.println("Telefone: " + utilizador.getTelefone());
+
+          System.out.println("Morada: " + utilizador.getMorada());
+
+          System.out.println("Localidade: " + utilizador.getMorada());
+
+          System.out.println("================================");
+     }
+
+     public static boolean verificarLogin(String numeroCC, String password)
+     {
+          Utilizador utilizador = utilizadores.get(numeroCC);
+
+          return utilizador != null && utilizador.getPassword().equals(password);
+     }
 }

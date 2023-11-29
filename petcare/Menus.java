@@ -20,7 +20,7 @@ public class Menus
         switch (option)
         {
             case 1:
-                Menus.login();
+                if(Menus.login()) ;
                 break;
             case 2:
                 Recursos.registo();
@@ -32,15 +32,26 @@ public class Menus
 
     }
 
-    public static void login()
+    //Metodo usado para fazer Login.
+    public static boolean login()
     {
         Scanner login = new Scanner(System.in);
 
         Recursos.clearScreen();
-        System.out.println("Insira o seu NumeroFiscal:");
-        String numerofiscal = login.nextLine();
+        System.out.println("Insira o seu Numero de Cartao de Cidadao:");
+        String numeroCC = login.nextLine();
         System.out.println("Insira o sua Password:");
         String password = login.nextLine();
+
+        if(PetCareUsuarios.verificarLogin(numeroCC,password))
+        {
+            System.out.println("Login feito com Sucesso!");
+            return true;
+        }else
+        {
+            System.out.println("Os Dados que inseriu estao incorretos.");
+            return false;
+        }
 
     }
 
