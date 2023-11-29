@@ -12,6 +12,27 @@ public class PetCareUsuarios
      private static Map<String, Utilizador> utilizadores = new HashMap<>();
 
 
+     //Criaçao do Unico Mapa de Utilizadores
+     private  static PetCareUsuarios users;
+
+     //Metodo para ser Criado apenas e so um Mapa de Utilizadores.
+     public static PetCareUsuarios getUsers()
+     {
+          if(users == null)
+          {
+               users = new PetCareUsuarios();
+          }
+
+          return users;
+     }
+
+     //Metodo para obter Utilizadores.
+     public Map<String, Utilizador> getUtilizadores()
+     {
+          return utilizadores;
+     }
+
+
      //Metodo que Adicionará Utilizador Registado ao Mapa
      public void AdicionarUtilizador()
      {
@@ -63,10 +84,21 @@ public class PetCareUsuarios
           System.out.println("================================");
      }
 
-     public static boolean verificarLogin(String numeroCC, String password)
+     public static Utilizador verificarLogin(String numeroCC, String password)
      {
-          Utilizador utilizador = utilizadores.get(numeroCC);
-
-          return utilizador != null && utilizador.getPassword().equals(password);
+          if(utilizadores.containsKey(numeroCC))
+          {
+               Utilizador utilizador = utilizadores.get(numeroCC);
+               if (utilizador.getPassword()equals(password))
+               {
+                    return  utilizador;
+               }else
+               {
+                    return null;
+               }
+          }else
+          {
+               return null;
+          }
      }
 }

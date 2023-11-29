@@ -3,8 +3,11 @@ package petcare;
 import petcare.users.*;
 
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 public class Menus
 {
+
     //Metodo do Menu Inicial
     public static void MenuLogin()
     {
@@ -17,10 +20,11 @@ public class Menus
 
     public static void MenuLoginOptions (int option)
     {
+        Utilizador utilizador = new Utilizador();
         switch (option)
         {
             case 1:
-                if(Menus.login()) ;
+                Menus.login();
                 break;
             case 2:
                 Recursos.registo();
@@ -32,9 +36,11 @@ public class Menus
 
     }
 
+
     //Metodo usado para fazer Login.
-    public static boolean login()
+    public static Utilizador login()
     {
+
         Scanner login = new Scanner(System.in);
 
         Recursos.clearScreen();
@@ -43,14 +49,16 @@ public class Menus
         System.out.println("Insira o sua Password:");
         String password = login.nextLine();
 
-        if(PetCareUsuarios.verificarLogin(numeroCC,password))
+        Utilizador user = PetCareUsuarios.verificarLogin(numeroCC,password);
+
+        if(user != null)
         {
             System.out.println("Login feito com Sucesso!");
-            return true;
+            return user;
         }else
         {
             System.out.println("Os Dados que inseriu estao incorretos.");
-            return false;
+            return null;
         }
 
     }
