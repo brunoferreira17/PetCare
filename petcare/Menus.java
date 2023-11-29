@@ -20,14 +20,13 @@ public class Menus
 
     public static void MenuLoginOptions (int option)
     {
-        Utilizador utilizador = new Utilizador();
         switch (option)
         {
             case 1:
                 Menus.login();
                 break;
             case 2:
-                Recursos.registo();
+                PetCareUsuarios.AdicionarUtilizador();
                 break;
 
 

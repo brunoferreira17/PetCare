@@ -6,14 +6,14 @@ public class Utilizador implements Serializable {
     // Atributos comuns a clientes, prestadores de serviços, Funcionarios e Adminstradores
     private String nome;
     private String numeroCC;
+    private String password;
     private String numeroFiscal;
     private String telefone;
     private String morada;
     private String localidade;
-    private String password;
 
     // Construtor
-    public Utilizador(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade,String password)
+    public Utilizador(String nome, String numeroCC,String password, String numeroFiscal, String telefone, String morada, String localidade)
     {
         this.nome = nome;
         this.numeroCC = numeroCC;
@@ -43,6 +43,16 @@ public class Utilizador implements Serializable {
     public void setNumeroCC(String numeroCC)
     {
         this.numeroCC = numeroCC;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public  void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public String getNumeroFiscal()
@@ -85,13 +95,4 @@ public class Utilizador implements Serializable {
         this.localidade = localidade;
     }
 
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public  void setPassword(String password)
-    {
-        this.password = password;
-    }
 }

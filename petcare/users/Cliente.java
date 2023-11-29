@@ -1,7 +1,9 @@
 package petcare.users;
 
+
 import petcare.Marcacao;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class Cliente extends Utilizador
     List<Marcacao> marcacoes;
 
     //Construtor
-    public Cliente(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade,String password)
+    public Cliente(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade, String password)
     {
         super(nome, numeroCC, numeroFiscal, telefone, morada, localidade, password);
          this.marcacoes = new ArrayList<>();

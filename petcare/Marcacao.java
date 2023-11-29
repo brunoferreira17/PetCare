@@ -3,9 +3,10 @@ package petcare;
 import petcare.users.Cliente;
 import petcare.users.PrestadorDeServico;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Marcacao
+public class Marcacao implements Serializable
 {
     //Atributos das Marcaçoes
     private Cliente cliente;

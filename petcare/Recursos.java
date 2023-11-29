@@ -1,7 +1,9 @@
 package petcare;
 
 import petcare.users.*;
+import petcare.Marcacao;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Recursos
@@ -44,22 +46,22 @@ public class Recursos
         Recursos.clearScreen();
         System.out.println("===== Registro de Pessoa =====");
 
-        System.out.println("Nome: ");
+        System.out.print("Nome: ");
         String nome = scanner.nextLine();
 
-        System.out.println("Número de Cartão de Cidadão: ");
+        System.out.print("Número de Cartão de Cidadão: ");
         String numeroCC = scanner.nextLine();
 
-        System.out.println("Password para o Login: ");
+        System.out.print("Password para o Login: ");
         String password = scanner.nextLine();
 
-        System.out.println("Número Fiscal: ");
+        System.out.print("Número Fiscal: ");
         String numeroFiscal = scanner.nextLine();
 
-        System.out.println("Telefone: ");
+        System.out.print("Telefone: ");
         String telefone = scanner.nextLine();
 
-        System.out.println("Morada: ");
+        System.out.print("Morada: ");
         String morada = scanner.nextLine();
 
         System.out.print("Localidade: ");
@@ -72,7 +74,7 @@ public class Recursos
             System.out.println("1-Cliente");
             System.out.println("2-Prestador de Serviço");
             System.out.println("3-Funcionario");
-            System.out.println("Escolha o Tipo:");
+            System.out.print("Escolha o Tipo:");
             tipousario = scanner.nextInt();
 
         }while (tipousario  > 4 || tipousario < 0);

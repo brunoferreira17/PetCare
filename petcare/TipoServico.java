@@ -1,11 +1,11 @@
 package petcare;
 
-public class TipoServiço
+public class TipoServico
 {
     private String descriçao;
     private double preço;
 
-    public TipoServiço(String descriçao,double preço)
+    public TipoServico(String descriçao, double preço)
     {
         this.descriçao = descriçao;
         this.preço = preço;

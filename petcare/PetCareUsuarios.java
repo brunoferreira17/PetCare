@@ -34,7 +34,7 @@ public class PetCareUsuarios
 
 
      //Metodo que Adicionará Utilizador Registado ao Mapa
-     public void AdicionarUtilizador()
+     public static void AdicionarUtilizador()
      {
           Utilizador novoUtilizador = Recursos.registo();
 
@@ -47,7 +47,7 @@ public class PetCareUsuarios
      }
 
      //Metodo usado para remmover Utilizadores.
-     public void RemoverUtilizador()
+     public static void RemoverUtilizador()
      {
           Scanner scanner = new Scanner(System.in);
 
@@ -59,13 +59,13 @@ public class PetCareUsuarios
      }
 
      //Metodo usado para Exibir Informaçao dos Utilizadores.
-     public void ExibirUtilizador()
+     public static void ExibirUtilizador(Utilizador utilizador)
      {
           Scanner scanner = new Scanner(System.in);
 
-          System.out.println("Insira o Numero do Cartao de Cidadao do Utilizador que deseja Ver:");
+          /*System.out.println("Insira o Numero do Cartao de Cidadao do Utilizador que deseja Ver:");
           String numeroCC = scanner.nextLine();
-          Utilizador utilizador = utilizadores.get(numeroCC);
+          Utilizador utilizador = utilizadores.get(numeroCC);*/
 
           System.out.println("===== Informaçao da Pessoa =====");
 
@@ -86,12 +86,17 @@ public class PetCareUsuarios
 
      public static Utilizador verificarLogin(String numeroCC, String password)
      {
+
           if(utilizadores.containsKey(numeroCC))
           {
-               Utilizador utilizador = utilizadores.get(numeroCC);
-               if (utilizador.getPassword()equals(password))
+
+               Utilizador utilizadorlogado = utilizadores.get(numeroCC);
+
+               String teste = utilizadorlogado.getPassword();
+               System.out.println("Teste:" + teste );
+               if (utilizadorlogado.getPassword().equals(password))
                {
-                    return  utilizador;
+                    return  utilizadorlogado;
                }else
                {
                     return null;

@@ -6,14 +6,15 @@ public class Local
     private String morada;
     private String localidade;
     private String contacto;
-    private TipoServiço tiposerviço;
+    private TipoServico tiposervico;
 
     //Construtor
-    public Local (String morada, String localidade, String contacto, TipoServiço tiposerviço)
+    public Local (String morada, String localidade, String contacto, TipoServico tiposervico)
     {
         this.morada = morada;
         this.localidade = localidade;
         this.contacto = contacto;
+        this.tiposervico = tiposervico;
     }
 
     //Getters e Setters
