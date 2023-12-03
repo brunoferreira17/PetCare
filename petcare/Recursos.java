@@ -73,7 +73,7 @@ public class Recursos
             System.out.println("Seleciona o Tipo de Utilizador:");
             System.out.println("1-Cliente");
             System.out.println("2-Prestador de Serviço");
-            System.out.println("3-Funcionario");
+            System.out.println("3-Sair do Registo");
             System.out.print("Escolha o Tipo:");
             tipousario = scanner.nextInt();
 
@@ -89,31 +89,6 @@ public class Recursos
             case 2:
                 novoUtilizador = new PrestadorDeServico(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
                 break;
-            case 3:
-
-                //Caso o Utilizador selecione o Registo de Funcionario.
-                int tipofuncionario = Recursos.EscolhaFuncionario();
-
-                switch (tipousario)
-                {
-                    case 1:
-                        novoUtilizador = new Funcionario(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade, TipoFuncionario.Veterinario);
-                        break;
-                    case 2:
-                        novoUtilizador = new Funcionario(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade, TipoFuncionario.EducadorDeAnimais);
-                        break;
-                    case 3:
-                        novoUtilizador = new Funcionario(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade, TipoFuncionario.Auxiliares);
-                        break;
-                    case 4:
-                        novoUtilizador = new Funcionario(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade, TipoFuncionario.Secretaria);
-                        break;
-                    default:
-                        System.out.println("Registo Cancelado.");
-                        return null;
-                }
-                break;
-
             default:
                 System.out.println("Registo Cancelado.");
                 return null;
