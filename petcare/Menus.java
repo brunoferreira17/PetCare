@@ -23,8 +23,18 @@ public class Menus
         switch (option)
         {
             case 1:
-                Menus.login();
-                break;
+                 Utilizador useron  = Menus.login();
+
+                 if(useron == null)
+                 {
+                     break;
+                 }else
+                 {
+                     Recursos.clearScreen();
+
+
+                 }
+
             case 2:
                 PetCareUsuarios.AdicionarUtilizador();
                 break;
@@ -60,6 +70,14 @@ public class Menus
             return null;
         }
 
+    }
+
+    public static void userpage()
+    {
+        System.out.println("====Pagina Inicial====");
+        System.out.println("1-Ver Marcaçoes.");
+        System.out.println("2-Realizar Marcação");
+        System.out.println("3-");
     }
 
 }

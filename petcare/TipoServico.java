@@ -1,33 +1,41 @@
 package petcare;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
+//Class relativa aos serviço das marcaçoes
 public class TipoServico
 {
-    private String descriçao;
-    private double preço;
+    private String descricao;
+    private double preco;
 
-    public TipoServico(String descriçao, double preço)
+    private List<Produto> produtos;
+
+    public TipoServico(String descricao, double preco)
     {
-        this.descriçao = descriçao;
-        this.preço = preço;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.produtos = new ArrayList<>();
     }
 
-    public String getDescriçao()
+    public String getDescricao()
     {
-        return descriçao;
+        return descricao;
     }
 
-    public void setDescriçao(String descriçao)
+    public void setDescricao(String descricao)
     {
-        this.descriçao = descriçao;
+        this.descricao = descricao;
     }
 
-    public double getPreço()
+    public double getPreco()
     {
-        return preço;
+        return preco;
     }
 
-    public void setPreço(double preço)
+    public void setPreco(double preco)
     {
-        this.preço = preço;
+        this.preco = preco;
     }
 }
