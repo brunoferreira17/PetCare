@@ -1,10 +1,11 @@
 package petcare;
 
+import petcare.users.Cliente;
 import petcare.users.Utilizador;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
+
+import static java.util.Collections.sort;
 
 public class PetCareUsuarios
 {
@@ -106,4 +107,5 @@ public class PetCareUsuarios
                return null;
           }
      }
+
 }

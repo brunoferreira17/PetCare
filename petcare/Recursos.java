@@ -1,9 +1,7 @@
 package petcare;
 
 import petcare.users.*;
-import petcare.Marcacao;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Recursos

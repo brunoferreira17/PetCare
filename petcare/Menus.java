@@ -3,8 +3,7 @@ package petcare;
 import petcare.users.*;
 
 import java.util.Scanner;
-import java.util.HashMap;
-import java.util.Map;
+
 public class Menus
 {
 
@@ -31,6 +30,17 @@ public class Menus
                  }else
                  {
                      Recursos.clearScreen();
+                     //Verificar que Tipo de User é
+                     if(useron instanceof Cliente)
+                     {
+
+                         int optionCliente = Menus.Clientepage();
+
+                         switch (optionCliente)
+                         {
+                             case 1:((Cliente) useron).mostrarMarcacoesSimples();
+                         }
+                     }
 
 
                  }
@@ -72,12 +82,24 @@ public class Menus
 
     }
 
-    public static void userpage()
+    public static int Clientepage()
     {
-        System.out.println("====Pagina Inicial====");
-        System.out.println("1-Ver Marcaçoes.");
-        System.out.println("2-Realizar Marcação");
-        System.out.println("3-");
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("====Menu Cliente====");
+            System.out.println("1-Ver Marcaçoes.");
+            System.out.println("2-Marcar Marcaçoes.");
+            System.out.println("3-Editar Conta Pessoal.");
+            System.out.println("4-Sair da Conta.");
+            System.out.print("Escolha a sua opção:");
+            option = scanner.nextInt();
+
+        }while (option  > 4 || option < 0);
+
+        return option;
     }
 
 }
