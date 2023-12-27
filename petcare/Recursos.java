@@ -2,6 +2,10 @@ package petcare;
 
 import petcare.users.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Recursos
@@ -95,6 +99,87 @@ public class Recursos
         return novoUtilizador;
     }
 
+    public static Marcacao registomarcacao(Cliente Cliente)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        LocalDate data = null;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+        int tipousario;
+
+        //Recolha da informaçao para Registo
+        Recursos.clearScreen();
+        System.out.println("===== Registro da Marcaçao =====");
+
+        Map<String,PrestadorDeServico> prestadores = new HashMap<>();
+        
+        prestadores = PetCareUsuarios.getPrestadoresdeServico();
+
+        if(prestadores.isEmpty())
+        {
+          System.out.println("Nao há Prestadores de Serviço Disponiveis!");
+          return null;
+        }
+
+        boolean validacao = false;
+
+        String prestadorescolhido;
+
+       do
+       {
+           for (String prestador : prestadores.keySet()) {
+               System.out.println("->" + prestador);
+           }
+
+           System.out.println("Escolha o Prestador de Serviço(Nome) para o Serviço ou escreva 'Cancelar' para cancelar a marcaçao:");
+           prestadorescolhido = scanner.nextLine();
+
+           if (prestadorescolhido.equalsIgnoreCase("cancelar")) {
+               System.out.println("Marcaçao Cancelada");
+               return null;
+           }
+
+           if(prestadores.containsKey(prestadorescolhido))
+           {
+               validacao = true;
+           }else
+           {
+               System.out.println("Nao Existe Prestador com esse Nome!");
+           }
+       }while (!validacao);
+
+
+       validacao = false;
+
+       do
+       {
+           try {
+               System.out.println("Escolha o Dia da Marcaçao(dd-MM-yyyy)");
+               String dataescolhida = scanner.nextLine();
+
+               data = LocalDate.parse(dataescolhida,formatter);
+
+               validacao = true;
+           } catch (Exception e) {
+               System.out.println("Formato de data inválido.");
+           }
+       }while (!validacao);
+
+       System.out.println("Escreva o Serviço que quer:");
+       String servico = scanner.nextLine();
+
+       TipoServico servicoescolhido = null;
+
+       servicoescolhido.setDescricao(servico);
+
+
+       System.out.println("Marcaçao Feita!");
+
+       Marcacao novaMarcacao = new Marcacao(Cliente,prestadores.get(prestadorescolhido), null ,data ,servicoescolhido ,"Pendente", 0);
+
+        return novaMarcacao;
+    }
 }
 
 

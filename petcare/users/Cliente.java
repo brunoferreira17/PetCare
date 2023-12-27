@@ -2,6 +2,7 @@ package petcare.users;
 
 
 import petcare.Marcacao;
+import petcare.Recursos;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,12 +11,12 @@ import java.util.List;
 
 public class Cliente extends Utilizador
 {
-    List<Marcacao> marcacoes;
+    ArrayList<Marcacao> marcacoes;
 
     //Construtor
-    public Cliente(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade, String password)
+    public Cliente(String nome, String numeroCC, String password, String numeroFiscal, String telefone, String morada, String localidade)
     {
-        super(nome, numeroCC, numeroFiscal, telefone, morada, localidade, password);
+        super(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
          this.marcacoes = new ArrayList<>();
     }
 
@@ -26,7 +27,7 @@ public class Cliente extends Utilizador
 
     public void setMarcacoes(List<Marcacao> marcacoes)
     {
-        this.marcacoes = marcacoes;
+        this.marcacoes = (ArrayList<Marcacao>) marcacoes;
     }
 
     //Metodo para Adicionar Marcaçao
@@ -52,15 +53,31 @@ public class Cliente extends Utilizador
         return new ArrayList<>(marcacoes); // Retorna uma cópia da lista para evitar modificações externas
     }
 
+
     //Metodo para enviar Informaçao Basica da Marcaçao
     public void mostrarMarcacoesSimples()
     {
-        if (!marcacoes.isEmpty())
-        System.out.println("Marcações do Cliente:");
-        for (Marcacao marcacao : marcacoes) {
-            System.out.println("Data: " + marcacao.getData());
-            System.out.println("Estado: " + marcacao.getEstado());
-            System.out.println("-----------------------");
+        ArrayList<Marcacao> listamarcacoes = (ArrayList<Marcacao>) getMarcacoes2();
+
+        if (!listamarcacoes.isEmpty())
+        {
+            System.out.println("Marcações do Cliente:");
+            for (Marcacao marcacao : marcacoes) {
+                System.out.println("Data: " + marcacao.getData());
+                System.out.println("Estado: " + marcacao.getEstado());
+                System.out.println("-----------------------");
+            }
+        }else
+        {
+            System.out.println("O Cliente nao tem nenhuma Marcaçao no Registo.");
         }
+    }
+
+    //Metodo para Marcar Marcaçoes
+    public void marcarMarcacao()
+    {
+        Marcacao novaMarcacao = Recursos.registomarcacao(this);
+
+        marcacoes.add(novaMarcacao);
     }
 }

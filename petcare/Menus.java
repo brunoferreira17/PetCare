@@ -17,45 +17,6 @@ public class Menus
         System.out.println("Escolha a sua opção:");
     }
 
-    public static void MenuLoginOptions (int option)
-    {
-        switch (option)
-        {
-            case 1:
-                 Utilizador useron  = Menus.login();
-
-                 if(useron == null)
-                 {
-                     break;
-                 }else
-                 {
-                     Recursos.clearScreen();
-                     //Verificar que Tipo de User é
-                     if(useron instanceof Cliente)
-                     {
-
-                         int optionCliente = Menus.Clientepage();
-
-                         switch (optionCliente)
-                         {
-                             case 1:((Cliente) useron).mostrarMarcacoesSimples();
-                         }
-                     }
-
-
-                 }
-
-            case 2:
-                PetCareUsuarios.AdicionarUtilizador();
-                break;
-
-
-
-        }
-
-    }
-
-
     //Metodo usado para fazer Login.
     public static Utilizador login()
     {
@@ -82,6 +43,62 @@ public class Menus
 
     }
 
+    //Metodo que executará as os Opçoes no Menu do Utilizador
+    public static void MenuLoginOptions (int option)
+    {
+
+        switch (option)
+        {
+            case 1:
+                Utilizador useron  = Menus.login();
+
+                if(useron == null)
+                {
+                    break;
+                }else
+                {
+                    Recursos.clearScreen();
+                    //Verificar que Tipo de User é
+                    if(useron instanceof Cliente)
+                    {
+                        do
+                        {
+                            Recursos.clearScreen();
+                            int optionCliente = Menus.Clientepage();
+
+                            switch (optionCliente) {
+                                case 1:
+                                    ((Cliente) useron).mostrarMarcacoesSimples();
+                                    break;
+                                case 2:
+                                    ((Cliente) useron).marcarMarcacao();
+                                    break;
+                                case 4:
+                                    useron = null;
+                                    break;
+                            }
+                        }while (useron != null);
+                    }
+                    break;
+
+                }
+
+            case 2:
+                PetCareUsuarios.AdicionarUtilizador();
+                break;
+
+            case 3:
+                System.out.println("Encerando o Programa...");
+                break;
+
+            default:
+                System.out.println("Opçao Invalida Tente Outra vez!");
+                break;
+        }
+
+    }
+
+    //Metodo que Mostrará as Opçoes do Utilizador Cliente
     public static int Clientepage()
     {
         Scanner scanner = new Scanner(System.in);

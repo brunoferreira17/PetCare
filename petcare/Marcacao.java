@@ -4,6 +4,7 @@ import petcare.users.Cliente;
 import petcare.users.PrestadorDeServico;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Marcacao implements Serializable
@@ -12,14 +13,14 @@ public class Marcacao implements Serializable
     private Cliente cliente;
     private PrestadorDeServico prestadordeservico;
     private Local local;
-    private Date data;
+    private LocalDate data;
     private TipoServico servico;
     private String estado;
     private double precofinal;
 
 
     //Construtor
-    public Marcacao (Cliente cliente, PrestadorDeServico prestadordeservico, Local local, Date data, TipoServico servico, String estado, double precofinal)
+    public Marcacao (Cliente cliente, PrestadorDeServico prestadordeservico, Local local, LocalDate data, TipoServico servico, String estado, double precofinal)
     {
         this.cliente = cliente;
         this.prestadordeservico = prestadordeservico;
@@ -60,12 +61,12 @@ public class Marcacao implements Serializable
         this.local = local;
     }
 
-    public Date getData()
+    public LocalDate getData()
     {
         return data;
     }
 
-    public void setData(Date data)
+    public void setData(LocalDate data)
     {
         this.data = data;
     }

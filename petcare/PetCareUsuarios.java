@@ -1,17 +1,17 @@
 package petcare;
 
 import petcare.users.Cliente;
+import petcare.users.PrestadorDeServico;
 import petcare.users.Utilizador;
 
 import java.util.*;
-
-import static java.util.Collections.sort;
 
 public class PetCareUsuarios
 {
      //Mapa onde vao ficar todos os usuarios.
      private static Map<String, Utilizador> utilizadores = new HashMap<>();
-
+     //Mapa onde vao ficar apenas os usuarios Prestadores de Serviço.
+     private static Map<String, PrestadorDeServico> prestadoresdeservico = new HashMap<>();
 
      //Criaçao do Unico Mapa de Utilizadores
      private  static PetCareUsuarios users;
@@ -28,9 +28,9 @@ public class PetCareUsuarios
      }
 
      //Metodo para obter Utilizadores.
-     public Map<String, Utilizador> getUtilizadores()
+     public static Map<String, PrestadorDeServico> getPrestadoresdeServico()
      {
-          return utilizadores;
+          return prestadoresdeservico;
      }
 
 
@@ -41,9 +41,18 @@ public class PetCareUsuarios
 
           if(novoUtilizador != null)
           {
-               String numeroCC = novoUtilizador.getNumeroCC();
-               utilizadores.put(numeroCC, novoUtilizador);
-               System.out.println("Usuario Registado com Sucesso!");
+               if(novoUtilizador instanceof Cliente)
+               {
+                    String numeroCC = novoUtilizador.getNumeroCC();
+                    utilizadores.put(numeroCC, novoUtilizador);
+                    System.out.println("Usuario Registado com Sucesso!");
+               } else if (novoUtilizador instanceof PrestadorDeServico)
+               {
+                    String numeroCC = novoUtilizador.getNumeroCC();
+                    utilizadores.put(numeroCC, novoUtilizador);
+                    prestadoresdeservico.put(novoUtilizador.getNome(), (PrestadorDeServico) novoUtilizador);
+                    System.out.println("Usuario Registado com Sucesso!");
+               }
           }
      }
 
@@ -54,7 +63,17 @@ public class PetCareUsuarios
 
           System.out.println("Insira o Numero do Cartao de Cidadao do Utilizador que deseja remover:");
           String numeroCC = scanner.nextLine();
-          utilizadores.remove(numeroCC);
+
+          Utilizador user = utilizadores.get(numeroCC);
+
+          if(user instanceof Cliente)
+          {
+               utilizadores.remove(numeroCC);
+          } else if (user instanceof PrestadorDeServico)
+          {
+               utilizadores.remove(numeroCC);
+               prestadoresdeservico.remove(user.getNome());
+          }
           System.out.println("Utilizador Removido com Sucesso!");
 
      }
@@ -87,14 +106,15 @@ public class PetCareUsuarios
 
      public static Utilizador verificarLogin(String numeroCC, String password)
      {
+          Utilizador novoCliente = new Cliente("Bruno","12345","123","54321","961231","esp","apl");
+
+          utilizadores.put("12345",novoCliente);
 
           if(utilizadores.containsKey(numeroCC))
           {
 
                Utilizador utilizadorlogado = utilizadores.get(numeroCC);
-
-               String teste = utilizadorlogado.getPassword();
-               System.out.println("Teste:" + teste );
+               
                if (utilizadorlogado.getPassword().equals(password))
                {
                     return  utilizadorlogado;

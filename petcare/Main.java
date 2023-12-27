@@ -1,16 +1,15 @@
 package petcare;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main
 {
-    private static PetCareUsuarios users = new PetCareUsuarios();
     public static void main(String[] args)
     {
 
         Scanner scanner = new Scanner(System.in);
-        int option = 0;
+        boolean programa = false;
+        int option;
         //Inicio do Programma.
         do
         {
@@ -18,7 +17,12 @@ public class Main
             option = scanner.nextInt();
             Recursos.clearScreen();
             Menus.MenuLoginOptions(option);
-        }while (option != 3);
+            if(option == 3)
+            {
+                programa = true;
+            }
+
+        }while (!programa);
 
     }
 
