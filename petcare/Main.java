@@ -10,7 +10,7 @@ public class Main
         Scanner scanner = new Scanner(System.in);
         boolean programa = false;
         int option;
-        //Inicio do Programma.
+        //Inicio do Programma..
         do
         {
             Menus.MenuLogin();
