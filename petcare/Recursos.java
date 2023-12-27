@@ -169,10 +169,7 @@ public class Recursos
        System.out.println("Escreva o Serviço que quer:");
        String servico = scanner.nextLine();
 
-       TipoServico servicoescolhido = null;
-
-       servicoescolhido.setDescricao(servico);
-
+       TipoServico servicoescolhido = new TipoServico(servico, 0);
 
        System.out.println("Marcaçao Feita!");
 
