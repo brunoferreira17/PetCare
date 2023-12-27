@@ -41,18 +41,26 @@ public class PetCareUsuarios
 
           if(novoUtilizador != null)
           {
-               if(novoUtilizador instanceof Cliente)
+               String numeroCC = novoUtilizador.getNumeroCC();
+               if(!utilizadores.containsKey(numeroCC))
                {
-                    String numeroCC = novoUtilizador.getNumeroCC();
-                    utilizadores.put(numeroCC, novoUtilizador);
-                    System.out.println("Usuario Registado com Sucesso!");
-               } else if (novoUtilizador instanceof PrestadorDeServico)
+                    if(novoUtilizador instanceof Cliente)
+                    {
+                         utilizadores.put(numeroCC, novoUtilizador);
+                         System.out.println("Usuario Registado com Sucesso!");
+                    } else if (novoUtilizador instanceof PrestadorDeServico)
+                    {
+                         utilizadores.put(numeroCC, novoUtilizador);
+                         prestadoresdeservico.put(novoUtilizador.getNome(), (PrestadorDeServico) novoUtilizador);
+                         System.out.println("Usuario Registado com Sucesso!");
+                    }
+               }else
                {
-                    String numeroCC = novoUtilizador.getNumeroCC();
-                    utilizadores.put(numeroCC, novoUtilizador);
-                    prestadoresdeservico.put(novoUtilizador.getNome(), (PrestadorDeServico) novoUtilizador);
-                    System.out.println("Usuario Registado com Sucesso!");
+                    System.out.println("Ja existe um Utilizador Com Esse Numero de Cartao de Cidadao!");
                }
+          }else
+          {
+               System.out.println("Registo Invalido!");
           }
      }
 
