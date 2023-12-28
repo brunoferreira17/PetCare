@@ -73,6 +73,34 @@ public class Menus
                                 case 2:
                                     ((Cliente) useron).marcarMarcacao();
                                     break;
+                                case 3:
+                                    PetCareUsuarios.EditarUtilizador(useron);
+                                    break;
+
+                                case 4:
+                                    useron = null;
+                                    break;
+                            }
+                        }while (useron != null);
+                    }
+                    if(useron instanceof PrestadorDeServico)
+                    {
+                        do
+                        {
+                            Recursos.clearScreen();
+                            int optionPrestador = Menus.Prestadorpage();
+
+                            switch (optionPrestador) {
+                                case 1:
+                                    ((Cliente) useron).mostrarMarcacoesSimples();
+                                    break;
+                                case 2:
+                                    ((Cliente) useron).marcarMarcacao();
+                                    break;
+                                case 3:
+                                    PetCareUsuarios.EditarUtilizador(useron);
+                                    break;
+
                                 case 4:
                                     useron = null;
                                     break;
@@ -119,6 +147,47 @@ public class Menus
         return option;
     }
 
+    //Metodo que Mostrará as Opçoes do Utilizador Prestador de Serviço
+    public static int Prestadorpage()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("====Menu Prestador De Serviço====");
+            System.out.println("1-Ver Marcaçoes.");
+            System.out.println("2-Marcar Marcaçoes.");
+            System.out.println("3-Editar Conta Pessoal.");
+            System.out.println("4-Sair da Conta.");
+            System.out.print("Escolha a sua opção:");
+            option = scanner.nextInt();
+
+        }while (option  > 4 || option < 0);
+
+        return option;
+    }
+    public static int editarPage()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("-----Ediçao de Utilizador----");
+            System.out.println("1-Nome");
+            System.out.println("2-Numero Do Cartao de Cidadao");
+            System.out.println("3-Numero Fiscal");
+            System.out.println("4-Telefone");
+            System.out.println("5-Morada");
+            System.out.println("6-Localidade");
+            System.out.println("7-Nao alterar Nada");
+            System.out.println("O que deseja mudar:");
+            option = scanner.nextInt();
+        }while (option  > 7 || option < 0);
+
+        return option;
+    }
 }
 
 

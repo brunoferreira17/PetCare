@@ -112,6 +112,22 @@ public class PetCareUsuarios
           System.out.println("================================");
      }
 
+     public static void EditarUtilizador(Utilizador utilizador)
+     {
+
+          utilizadores.remove(utilizador.getNumeroCC());
+
+          Scanner scanner = new Scanner(System.in);
+
+          PetCareUsuarios.ExibirUtilizador(utilizador);
+
+          Utilizador editedutilizador = Recursos.editarUtilizador(utilizador);
+
+          utilizadores.put(editedutilizador.getNumeroCC(),editedutilizador);
+
+          System.out.println("-----Ediçao de Utilizador Completa----");
+     }
+
      public static Utilizador verificarLogin(String numeroCC, String password)
      {
           Utilizador novoCliente = new Cliente("Bruno","12345","123","54321","961231","esp","apl");

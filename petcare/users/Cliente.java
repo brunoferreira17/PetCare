@@ -80,4 +80,5 @@ public class Cliente extends Utilizador
 
         marcacoes.add(novaMarcacao);
     }
+
 }

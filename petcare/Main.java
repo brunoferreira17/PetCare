@@ -21,9 +21,7 @@ public class Main
             {
                 programa = true;
             }
-
         }while (!programa);
-
     }
 
 }

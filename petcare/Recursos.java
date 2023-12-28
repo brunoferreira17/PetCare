@@ -99,6 +99,66 @@ public class Recursos
         return novoUtilizador;
     }
 
+    public static Utilizador editarUtilizador(Utilizador utilizador)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        String alterar;
+
+        boolean validacao = false;
+
+        do {
+            int option = Menus.editarPage();
+            switch (option)
+            {
+                case 1:
+                    System.out.println("Qual Nome voce deseja:");
+                    alterar = scanner.nextLine();
+
+                    utilizador.setNome(alterar);
+                    break;
+                case 2:
+                    System.out.println("Qual Numero do Cartao de Cidadao voce deseja:");
+                    alterar = scanner.nextLine();
+
+                    utilizador.setNumeroCC(alterar);
+                    break;
+                case 3:
+                    System.out.println("Qual Numero Fiscal voce deseja:");
+                    alterar = scanner.nextLine();
+
+                    utilizador.setNumeroFiscal(alterar);
+                    break;
+                case 4:
+                    System.out.println("Qual Numero de Telefone voce deseja:");
+                    alterar = scanner.nextLine();
+
+                    utilizador.setTelefone(alterar);
+                    break;
+                case 5:
+                    System.out.println("Qual Morada voce deseja:");
+                    alterar = scanner.nextLine();
+
+                    utilizador.setMorada(alterar);
+                    break;
+                case 6:
+                    System.out.println("Qual Localidade voce deseja:");
+                    alterar = scanner.nextLine();
+
+                    utilizador.setLocalidade(alterar);
+                    break;
+                case 7:
+                    validacao = true;
+                    break;
+                default:
+                    System.out.println("Opçao Invalida. Tente outra vez!");
+                    break;
+            }
+        }while (!validacao);
+
+        return utilizador;
+    }
+
     public static Marcacao registomarcacao(Cliente Cliente)
     {
         Scanner scanner = new Scanner(System.in);
