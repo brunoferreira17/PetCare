@@ -36,7 +36,6 @@ public class PetCareUsuarios
           return prestadoresdeservico;
      }
 
-
      //Metodo que Adicionará Utilizador Registado ao Mapa
      public static void AdicionarUtilizador()
      {

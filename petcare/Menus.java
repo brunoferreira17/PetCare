@@ -52,17 +52,11 @@ public class Menus
             case 1:
                 Utilizador useron  = Menus.login();
 
-                if(useron == null)
-                {
-                    break;
-                }else
-                {
+                if (useron != null) {
                     Recursos.clearScreen();
                     //Verificar que Tipo de User é
-                    if(useron instanceof Cliente)
-                    {
-                        do
-                        {
+                    if (useron instanceof Cliente) {
+                        do {
                             Recursos.clearScreen();
                             int optionCliente = Menus.Clientepage();
 
@@ -81,21 +75,19 @@ public class Menus
                                     useron = null;
                                     break;
                             }
-                        }while (useron != null);
+                        } while (useron != null);
                     }
-                    if(useron instanceof PrestadorDeServico)
-                    {
-                        do
-                        {
+                    if (useron instanceof PrestadorDeServico) {
+                        do {
                             Recursos.clearScreen();
                             int optionPrestador = Menus.Prestadorpage();
 
                             switch (optionPrestador) {
                                 case 1:
-                                    ((Cliente) useron).mostrarMarcacoesSimples();
+                                    ((PrestadorDeServico) useron).mostrarMarcacoesSimples();
                                     break;
                                 case 2:
-                                    ((Cliente) useron).marcarMarcacao();
+                                    //((PrestadorDeServico) useron)
                                     break;
                                 case 3:
                                     PetCareUsuarios.EditarUtilizador(useron);
@@ -105,11 +97,11 @@ public class Menus
                                     useron = null;
                                     break;
                             }
-                        }while (useron != null);
+                        } while (useron != null);
                     }
-                    break;
 
                 }
+                break;
 
             case 2:
                 PetCareUsuarios.AdicionarUtilizador();

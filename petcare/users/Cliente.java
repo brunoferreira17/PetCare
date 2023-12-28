@@ -5,7 +5,6 @@ import petcare.Marcacao;
 import petcare.Recursos;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -28,12 +27,6 @@ public class Cliente extends Utilizador
     public void setMarcacoes(List<Marcacao> marcacoes)
     {
         this.marcacoes = (ArrayList<Marcacao>) marcacoes;
-    }
-
-    //Metodo para Adicionar Marcaçao
-    public void adicionarMarcacao(Marcacao marcacao)
-    {
-        this.marcacoes.add(marcacao);
     }
 
     //Metodo para Remover Marcaçao
@@ -77,8 +70,11 @@ public class Cliente extends Utilizador
     public void marcarMarcacao()
     {
         Marcacao novaMarcacao = Recursos.registomarcacao(this);
-
         marcacoes.add(novaMarcacao);
+
+        PrestadorDeServico prestador = novaMarcacao.getPrestadordeservico();
+        prestador.marcarMarcacaoPrestador(novaMarcacao);
+
     }
 
 }
