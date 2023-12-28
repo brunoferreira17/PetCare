@@ -6,7 +6,7 @@ public class Veternario extends Funcionario
 {
     String carteira;
 
-    public Veternario(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade, String password)
+    public Veternario(String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade, String password, String carteira)
     {
         super(nome, numeroCC, numeroFiscal, telefone, morada, localidade, password);
         this.carteira = carteira;

@@ -1,6 +1,7 @@
 package petcare;
 
 import petcare.users.Cliente;
+import petcare.users.Funcionario;
 import petcare.users.PrestadorDeServico;
 import petcare.users.Utilizador;
 
@@ -12,6 +13,8 @@ public class PetCareUsuarios
      private static Map<String, Utilizador> utilizadores = new HashMap<>();
      //Mapa onde vao ficar apenas os usuarios Prestadores de Serviço.
      private static Map<String, PrestadorDeServico> prestadoresdeservico = new HashMap<>();
+     //Mapa onde vao ficar apenas os usuarios Funcionarios.
+     private static Map<String, Funcionario> funcionarios = new HashMap<>();
 
      //Criaçao do Unico Mapa de Utilizadores
      private  static PetCareUsuarios users;
@@ -48,10 +51,17 @@ public class PetCareUsuarios
                     {
                          utilizadores.put(numeroCC, novoUtilizador);
                          System.out.println("Usuario Registado com Sucesso!");
-                    } else if (novoUtilizador instanceof PrestadorDeServico)
+                    }
+                    if (novoUtilizador instanceof PrestadorDeServico)
                     {
                          utilizadores.put(numeroCC, novoUtilizador);
                          prestadoresdeservico.put(novoUtilizador.getNome(), (PrestadorDeServico) novoUtilizador);
+                         System.out.println("Usuario Registado com Sucesso!");
+                    }
+                    if (novoUtilizador instanceof Funcionario)
+                    {
+                         utilizadores.put(numeroCC, novoUtilizador);
+                         funcionarios.put(novoUtilizador.getNome(), (Funcionario) novoUtilizador);
                          System.out.println("Usuario Registado com Sucesso!");
                     }
                }else

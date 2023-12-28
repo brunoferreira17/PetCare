@@ -137,7 +137,7 @@ public class Menus
             System.out.println("====Menu Cliente====");
             System.out.println("1-Ver Marcaçoes.");
             System.out.println("2-Marcar Marcaçoes.");
-            System.out.println("3-Editar Conta Pessoal.");
+            System.out.println("3-Alterar Informaçoes da Conta Pessoal.");
             System.out.println("4-Sair da Conta.");
             System.out.print("Escolha a sua opção:");
             option = scanner.nextInt();
@@ -157,9 +157,10 @@ public class Menus
         {
             System.out.println("====Menu Prestador De Serviço====");
             System.out.println("1-Ver Marcaçoes.");
-            System.out.println("2-Marcar Marcaçoes.");
-            System.out.println("3-Editar Conta Pessoal.");
-            System.out.println("4-Sair da Conta.");
+            System.out.println("2-Adicionar Local.");
+            System.out.println("3-Alterar Informaçoes do Local.");
+            System.out.println("4-Alterar Informaçoes da Conta Pessoal.");
+            System.out.println("5-Sair da Conta.");
             System.out.print("Escolha a sua opção:");
             option = scanner.nextInt();
 

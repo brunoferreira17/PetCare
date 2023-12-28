@@ -4,7 +4,6 @@ import petcare.users.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -15,27 +14,6 @@ public class Recursos
     {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-    }
-
-    public static int EscolhaFuncionario()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        int tipofuncionario = 0;
-
-        do{
-            System.out.println("Seleciona o Tipo de Funcionario:");
-            System.out.println("1-Veterinario");
-            System.out.println("2-Educador De Animais");
-            System.out.println("3-Auxiliares");
-            System.out.println("4-Secretaria");
-            System.out.println("5-Nenhuma Opçao");
-            System.out.println("Escolha o Tipo:");
-            tipofuncionario = scanner.nextInt();
-
-        }while (tipofuncionario  > 5 || tipofuncionario < 1);
-
-        return tipofuncionario;
     }
 
     public static Utilizador registo()
@@ -75,11 +53,38 @@ public class Recursos
             System.out.println("Seleciona o Tipo de Utilizador:");
             System.out.println("1-Cliente");
             System.out.println("2-Prestador de Serviço");
-            System.out.println("3-Sair do Registo");
+            System.out.println("3-Funcionario");
+            System.out.println("4-Sair do Registo");
             System.out.print("Escolha o Tipo:");
             tipousario = scanner.nextInt();
 
-        }while (tipousario  > 4 || tipousario < 0);
+        }while (tipousario  > 5 || tipousario < 1);
+
+        int tipofuncionario = 0;
+        String carteira = null;
+
+        if(tipousario == 3)
+        {
+            do{
+                System.out.println("Seleciona o Tipo de Funcionario:");
+                System.out.println("1-Educador");
+                System.out.println("2-Auxilar");
+                System.out.println("3-Secretariado");
+                System.out.println("4-Veternario");
+                System.out.println("5-Sair do Registo");
+                System.out.print("Escolha o Tipo:");
+                tipofuncionario = scanner.nextInt();
+
+            }while (tipofuncionario  > 5 || tipofuncionario < 1);
+        }
+
+        if(tipofuncionario == 4)
+        {
+            System.out.println("Insira a numero da Sua Carteira Profissional.");
+            carteira = scanner.next();
+
+            System.out.println(carteira);
+        }
 
         Utilizador novoUtilizador = null;
 
@@ -90,6 +95,26 @@ public class Recursos
                 break;
             case 2:
                 novoUtilizador = new PrestadorDeServico(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
+                break;
+            case 3:
+                switch (tipofuncionario)
+                {
+                    case 1:
+                        novoUtilizador = new Educador(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
+                        break;
+                    case 2:
+                        novoUtilizador = new Auxiliar(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
+                        break;
+                    case 3:
+                        novoUtilizador = new Secretariado(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
+                        break;
+                    case 4:
+                        novoUtilizador = new Veternario(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade,carteira);
+                        break;
+                    case 5:
+                        System.out.println("Registo Cancelado.");
+                        return null;
+                }
                 break;
             default:
                 System.out.println("Registo Cancelado.");
@@ -166,13 +191,11 @@ public class Recursos
         LocalDate data = null;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-        int tipousario;
-
         //Recolha da informaçao para Registo
         Recursos.clearScreen();
         System.out.println("===== Registro da Marcaçao =====");
 
-        Map<String,PrestadorDeServico> prestadores = new HashMap<>();
+        Map<String,PrestadorDeServico> prestadores;
         
         prestadores = PetCareUsuarios.getPrestadoresdeServico();
 
@@ -233,9 +256,7 @@ public class Recursos
 
        System.out.println("Marcaçao Feita!");
 
-       Marcacao novaMarcacao = new Marcacao(Cliente,prestadores.get(prestadorescolhido), null ,data ,servicoescolhido ,"Pendente", 0);
-
-        return novaMarcacao;
+        return new Marcacao(Cliente,prestadores.get(prestadorescolhido), null ,data ,servicoescolhido ,"Pendente", 0);
     }
 }
 
