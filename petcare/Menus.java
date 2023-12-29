@@ -90,9 +90,11 @@ public class Menus
                                     ((PrestadorDeServico) useron).editarMarcacao();
                                     break;
                                 case 3:
-                                    PetCareUsuarios.EditarUtilizador(useron);
+
                                     break;
                                 case 5:
+                                    PetCareUsuarios.EditarUtilizador(useron);
+                                case 6:
                                     useron = null;
                                     break;
                             }
@@ -149,14 +151,14 @@ public class Menus
             System.out.println("====Menu Prestador De Serviço====");
             System.out.println("1-Ver Marcaçoes.");
             System.out.println("2-Editar Marcaçoes.");
-            System.out.println("2-Adicionar Local.");
-            System.out.println("3-Alterar Informaçoes do Local.");
-            System.out.println("4-Alterar Informaçoes da Conta Pessoal.");
-            System.out.println("5-Sair da Conta.");
+            System.out.println("3-Adicionar Local.");
+            System.out.println("4-Alterar Informaçoes do Local.");
+            System.out.println("5-Alterar Informaçoes da Conta Pessoal.");
+            System.out.println("6-Sair da Conta.");
             System.out.print("Escolha a sua opção:");
             option = scanner.nextInt();
 
-        }while (option  > 5 || option < 0);
+        }while (option  > 6 || option < 0);
 
         return option;
     }

@@ -3,7 +3,6 @@ package petcare.users;
 
 import petcare.Local;
 import petcare.Marcacao;
-import petcare.PetCareUsuarios;
 import petcare.Recursos;
 
 import java.util.ArrayList;
@@ -92,9 +91,11 @@ public class PrestadorDeServico extends Utilizador
             }
         }
 
+    }
 
-
-
+    public void adicionarLocal()
+    {
 
     }
+
 }
