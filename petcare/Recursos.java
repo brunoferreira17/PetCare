@@ -355,8 +355,15 @@ public class Recursos
 
                 marcacao.setServico(servicousado);
                 System.out.println("Preço Atualizado com Sucesso!");
-
-
+            case 5:
+                marcacao.setEstado("Cancelada");
+                System.out.println("Marcaçao Cancelada com Sucesso!");
+                break;
+            case 6:
+                return null;
+            case 7:
+                System.out.println("A voltar ao Menu....");
+                break;
         }
 
         return marcacao;

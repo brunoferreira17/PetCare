@@ -70,7 +70,6 @@ public class Menus
                                 case 3:
                                     PetCareUsuarios.EditarUtilizador(useron);
                                     break;
-
                                 case 4:
                                     useron = null;
                                     break;
@@ -93,8 +92,7 @@ public class Menus
                                 case 3:
                                     PetCareUsuarios.EditarUtilizador(useron);
                                     break;
-
-                                case 4:
+                                case 5:
                                     useron = null;
                                     break;
                             }
@@ -150,6 +148,7 @@ public class Menus
         {
             System.out.println("====Menu Prestador De Serviço====");
             System.out.println("1-Ver Marcaçoes.");
+            System.out.println("2-Editar Marcaçoes.");
             System.out.println("2-Adicionar Local.");
             System.out.println("3-Alterar Informaçoes do Local.");
             System.out.println("4-Alterar Informaçoes da Conta Pessoal.");
@@ -157,7 +156,7 @@ public class Menus
             System.out.print("Escolha a sua opção:");
             option = scanner.nextInt();
 
-        }while (option  > 4 || option < 0);
+        }while (option  > 5 || option < 0);
 
         return option;
     }
@@ -195,8 +194,8 @@ public class Menus
             System.out.println("2-Definir ou Alterar Local da Marcaçao.");
             System.out.println("3-Adicionar Produto ao Serviço");
             System.out.println("4-Definir ou Alterar Preço do Serviço");
-            System.out.println("5-Morada");
-            System.out.println("6-Cancelar Marcaçao");
+            System.out.println("5-Cancelar Marcaçao");
+            System.out.println("6-Eliminar Marcaçao");
             System.out.println("7-Nao alterar Nada");
             System.out.println("O que deseja mudar:");
             option = scanner.nextInt();

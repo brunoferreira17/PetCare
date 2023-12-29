@@ -57,7 +57,7 @@ public class PrestadorDeServico extends Utilizador
             }
         }else
         {
-            System.out.println("O Cliente nao tem nenhuma Marcaçao no Registo.");
+            System.out.println("O Prestador nao tem nenhuma Marcaçao no Registo.");
         }
     }
 
@@ -80,10 +80,16 @@ public class PrestadorDeServico extends Utilizador
 
             marcacaoEditada = Recursos.editarMarcacao(this,marcacaoPorEditar);
 
-            cliente.editarMarcacao(marcacaoPorEditar,marcacaoEditada);
+            if(marcacaoEditada == null)
+            {
+                marcacoes.remove(marcacaoPorEditar);
+                cliente.removerMarcacao(marcacaoPorEditar);
+            }else
+            {
+                cliente.editarMarcacao(marcacaoPorEditar,marcacaoEditada);
 
-            marcacoes.set(option-1,marcacaoEditada);
-
+                marcacoes.set(option-1,marcacaoEditada);
+            }
         }
 
 
