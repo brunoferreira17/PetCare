@@ -76,6 +76,11 @@ public class Marcacao implements Serializable
         return  servico;
     }
 
+    public String getDescriçaoServico()
+    {
+        return servico.getDescricao();
+    }
+
     public void setServico(TipoServico servico)
     {
         this.servico = servico;
@@ -93,6 +98,8 @@ public class Marcacao implements Serializable
 
     public double getPrecofinal()
     {
+        precofinal += servico.getPreco() + servico.getPrecoProdutos();
+
         return precofinal;
     }
 

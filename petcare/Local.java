@@ -1,20 +1,24 @@
 package petcare;
 
+import petcare.users.Funcionario;
+
+import java.util.ArrayList;
+
 public class Local
 {
     //Atributos do Local
     private String morada;
     private String localidade;
     private String contacto;
-    private TipoServico tiposervico;
+    ArrayList<Funcionario> funcionarios;
 
     //Construtor
-    public Local (String morada, String localidade, String contacto, TipoServico tiposervico)
+    public Local (String morada, String localidade, String contacto)
     {
         this.morada = morada;
         this.localidade = localidade;
         this.contacto = contacto;
-        this.tiposervico = tiposervico;
+        this.funcionarios = new ArrayList<>();
     }
 
     //Getters e Setters

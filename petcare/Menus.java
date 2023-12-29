@@ -87,7 +87,8 @@ public class Menus
                                     ((PrestadorDeServico) useron).mostrarMarcacoesSimples();
                                     break;
                                 case 2:
-                                    //((PrestadorDeServico) useron)
+                                    ((PrestadorDeServico) useron).mostrarMarcacoesSimples();
+                                    ((PrestadorDeServico) useron).editarMarcacao();
                                     break;
                                 case 3:
                                     PetCareUsuarios.EditarUtilizador(useron);
@@ -178,6 +179,48 @@ public class Menus
             System.out.println("O que deseja mudar:");
             option = scanner.nextInt();
         }while (option  > 7 || option < 0);
+
+        return option;
+    }
+
+    public static int editarMarcacaoPage()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("-----Ediçao de Marcaçao----");
+            System.out.println("1-Definir ou Alterar Estado da Marcaçao.");
+            System.out.println("2-Definir ou Alterar Local da Marcaçao.");
+            System.out.println("3-Adicionar Produto ao Serviço");
+            System.out.println("4-Definir ou Alterar Preço do Serviço");
+            System.out.println("5-Morada");
+            System.out.println("6-Cancelar Marcaçao");
+            System.out.println("7-Nao alterar Nada");
+            System.out.println("O que deseja mudar:");
+            option = scanner.nextInt();
+        }while (option  > 7 || option < 0);
+
+        return option;
+    }
+
+    public static int definirEstadoDaMarcacao()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("-----Definir Marcaçao como:----");
+            System.out.println("1-Aguardando Pagamento");
+            System.out.println("2-Confirmada");
+            System.out.println("3-Realizada");
+            System.out.println("4-Cancelada");
+            System.out.println("5-Manter o mesmo estado");
+            System.out.println("O que deseja mudar:");
+            option = scanner.nextInt();
+        }while (option  > 5 || option < 0);
 
         return option;
     }

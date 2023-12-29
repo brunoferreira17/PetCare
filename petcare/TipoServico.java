@@ -34,8 +34,26 @@ public class TipoServico
         return preco;
     }
 
+    public double getPrecoProdutos()
+    {
+        double precoProdutos = 0;
+
+        for(Produto produto : produtos)
+        {
+            precoProdutos += produto.getPreco();
+        }
+
+        return  precoProdutos;
+    }
+
     public void setPreco(double preco)
     {
         this.preco = preco;
     }
+
+    public void adicionarProduto(Produto produto)
+    {
+        produtos.add(produto);
+    }
+
 }

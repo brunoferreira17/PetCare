@@ -4,6 +4,7 @@ import petcare.users.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -256,7 +257,109 @@ public class Recursos
 
        System.out.println("Marcaçao Feita!");
 
-        return new Marcacao(Cliente,prestadores.get(prestadorescolhido), null ,data ,servicoescolhido ,"Pendente", 0);
+        return new Marcacao(Cliente,prestadores.get(prestadorescolhido), null ,data ,servicoescolhido ,"Pendente de Confirmaçao", 0);
+    }
+
+    public static Marcacao editarMarcacao(PrestadorDeServico prestador,Marcacao marcacao)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option = Menus.editarMarcacaoPage();
+
+        switch (option)
+        {
+            case 1:
+                System.out.println("Estado Atual: " + marcacao.getEstado());
+                int edicao = Menus.definirEstadoDaMarcacao();
+                switch (edicao)
+                {
+                    case 1:
+                        marcacao.setEstado("Aguardando Pagamento");
+                        System.out.println("Estado Alterado com Sucesso!");
+                        break;
+                    case 2:
+                        marcacao.setEstado("Confirmada");
+                        System.out.println("Estado Alterado com Sucesso!");
+                        break;
+                    case 3:
+                        marcacao.setEstado("Realizada");
+                        System.out.println("Estado Alterado com Sucesso!");
+                        break;
+                    case 4:
+                        marcacao.setEstado("Cancelada");
+                        System.out.println("Estado Alterado com Sucesso!");
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        System.out.println("Opçao Invalida");
+                        break;
+                }
+                break;
+            case 2:
+                ArrayList<Local> locaisprestador;
+
+                locaisprestador = (ArrayList<Local>) prestador.getLocais2();
+
+                if (!locaisprestador.isEmpty())
+                {
+                    int counter = 1;
+                    System.out.println("Locais do Prestador:");
+                    for (Local local : locaisprestador)
+                    {
+                        System.out.println("----Local " + counter + " ----");
+                        System.out.println("Morada: " + local.getMorada());
+                        System.out.println("Localidade: " + local.getLocalidade());
+                        System.out.println("-----------------------");
+                        counter++;
+                    }
+                }else
+                {
+                    System.out.println("O Prestador nao tem nenhum Local no Programa.");
+                    break;
+                }
+
+                System.out.println("Qual local deseja selecionar o Serviço");
+                int localescolhido = scanner.nextInt();
+
+                marcacao.setLocal(locaisprestador.get(localescolhido-1));
+                System.out.println("Local Definido Com Sucesso!");
+                break;
+            case 3:
+                System.out.println("Qual o nome do produto que deseja Adicionar:");
+                String nomeproduto = scanner.next();
+
+                System.out.println("Qual o Valor do Produto:");
+                double precoproduto = scanner.nextDouble();
+
+                if(nomeproduto != null)
+                {
+                    Produto produtousado = null;
+                    produtousado.setNome(nomeproduto);
+                    produtousado.setPreco(precoproduto);
+
+                    TipoServico servicousado = marcacao.getServico();
+                    servicousado.adicionarProduto(produtousado);
+                    marcacao.setServico(servicousado);
+                }
+                break;
+            case 4:
+
+                TipoServico servicousado = marcacao.getServico();
+
+                System.out.println("O preço Atual da Marcaçao é de " + marcacao.getPrecofinal() + " euros.");
+                System.out.println("Que valor deseja o Serviço " + servicousado.getDescricao() + " : ");
+                double precoServico = scanner.nextDouble();
+
+                servicousado.setPreco(precoServico);
+
+                marcacao.setServico(servicousado);
+                System.out.println("Preço Atualizado com Sucesso!");
+
+
+        }
+
+        return marcacao;
     }
 }
 

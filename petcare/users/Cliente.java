@@ -36,9 +36,17 @@ public class Cliente extends Utilizador
     }
 
     //Metodo para Editar Marcaçao
-    public void editarMarcacao(Marcacao marcacao)
+    public void editarMarcacao(Marcacao velhaMarcacao, Marcacao novaMarcacao)
     {
-
+        int pos = 0;
+        for(Marcacao marcacao : marcacoes)
+        {
+            if(marcacao.equals(velhaMarcacao))
+            {
+                marcacoes.set(pos,novaMarcacao);
+            }
+            pos++;
+        }
     }
 
     //Metodo para enviar as Marcaçoes em forma de Array
