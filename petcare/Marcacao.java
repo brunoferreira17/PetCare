@@ -76,7 +76,7 @@ public class Marcacao implements Serializable
         return  servico;
     }
 
-    public String getDescriçaoServico()
+    public String getDescricaoServico()
     {
         return servico.getDescricao();
     }

@@ -85,4 +85,12 @@ public class Cliente extends Utilizador
 
     }
 
+    /*private void inicioProgramaDados()
+     {
+          try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("dados")))
+          {
+               Object obj = inputStream.readObject();
+               if
+          }
+     }*/
 }

@@ -7,6 +7,8 @@ public class Main
     public static void main(String[] args)
     {
 
+        PetCareUsuarios.carregarDadosDoArquivo();
+
         Scanner scanner = new Scanner(System.in);
         boolean programa = false;
         int option;
@@ -22,6 +24,8 @@ public class Main
                 programa = true;
             }
         }while (!programa);
+
+        PetCareUsuarios.salvarDadosParaArquivo();
     }
 
 }

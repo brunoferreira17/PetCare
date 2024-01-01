@@ -5,6 +5,7 @@ import petcare.users.Funcionario;
 import petcare.users.PrestadorDeServico;
 import petcare.users.Utilizador;
 
+import java.io.*;
 import java.util.*;
 
 public class PetCareUsuarios
@@ -15,20 +16,6 @@ public class PetCareUsuarios
      private static Map<String, PrestadorDeServico> prestadoresdeservico = new HashMap<>();
      //Mapa onde vao ficar apenas os usuarios Funcionarios.
      private static Map<String, Funcionario> funcionarios = new HashMap<>();
-
-     //Criaçao do Unico Mapa de Utilizadores
-     private  static PetCareUsuarios users;
-
-     //Metodo para ser Criado apenas e so um Mapa de Utilizadores.
-     public static PetCareUsuarios getUsers()
-     {
-          if(users == null)
-          {
-               users = new PetCareUsuarios();
-          }
-
-          return users;
-     }
 
      //Metodo para obter Utilizadores.
      public static Map<String, PrestadorDeServico> getPrestadoresdeServico()
@@ -98,12 +85,6 @@ public class PetCareUsuarios
      //Metodo usado para Exibir Informaçao dos Utilizadores.
      public static void ExibirUtilizador(Utilizador utilizador)
      {
-          Scanner scanner = new Scanner(System.in);
-
-          /*System.out.println("Insira o Numero do Cartao de Cidadao do Utilizador que deseja Ver:");
-          String numeroCC = scanner.nextLine();
-          Utilizador utilizador = utilizadores.get(numeroCC);*/
-
           System.out.println("===== Informaçao da Pessoa =====");
 
           System.out.println("Nome: " + utilizador.getNome());
@@ -125,8 +106,6 @@ public class PetCareUsuarios
      {
 
           utilizadores.remove(utilizador.getNumeroCC());
-
-          Scanner scanner = new Scanner(System.in);
 
           PetCareUsuarios.ExibirUtilizador(utilizador);
 
@@ -160,5 +139,63 @@ public class PetCareUsuarios
                return null;
           }
      }
+
+     public static void carregarDadosDoArquivo()
+     {
+          try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("dados")))
+          {
+               Object obj = inputStream.readObject();
+               if (obj instanceof Map<?, ?>)
+               {
+                    Map<?, ?> data = (Map<?, ?>) obj;
+
+                    // Verifica e atribui os HashMaps específicos
+                    if (data.containsKey("utilizadores") && data.get("utilizadores") instanceof Map<?, ?>)
+                    {
+                         utilizadores = (Map<String, Utilizador>) data.get("utilizadores");
+                    } else {
+                         utilizadores = new HashMap<>();
+                    }
+
+                    if (data.containsKey("prestadoresdeservico") && data.get("prestadoresdeservico") instanceof Map<?, ?>)
+                    {
+                         prestadoresdeservico = (Map<String, PrestadorDeServico>) data.get("prestadoresdeservico");
+                    } else {
+                         prestadoresdeservico = new HashMap<>();
+                    }
+
+                    if (data.containsKey("funcionarios") && data.get("funcionarios") instanceof Map<?, ?>)
+                    {
+                         funcionarios = (Map<String, Funcionario>) data.get("funcionarios");
+                    } else {
+                         funcionarios = new HashMap<>();
+                    }
+               }
+          } catch (FileNotFoundException e)
+          {
+               System.out.println("Arquivo não encontrado. Criando novo arquivo...");
+               utilizadores = new HashMap<>();
+               prestadoresdeservico = new HashMap<>();
+               funcionarios = new HashMap<>();
+          } catch (IOException | ClassNotFoundException e)
+          {
+               e.printStackTrace();
+          }
+     }
+
+     public static void salvarDadosParaArquivo()
+     {
+          Map<String, Object> data = new HashMap<>();
+          data.put("utilizadores", utilizadores);
+          data.put("prestadoresdeservico", prestadoresdeservico);
+          data.put("funcionarios", funcionarios);
+
+          try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("dados"))) {
+               outputStream.writeObject(data);
+          } catch (IOException e) {
+               e.printStackTrace();
+          }
+     }
+
 
 }

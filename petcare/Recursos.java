@@ -368,6 +368,26 @@ public class Recursos
 
         return marcacao;
     }
+
+    public static Local registoLocal()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        Recursos.clearScreen();
+        System.out.println("----Registo De Local----");
+        System.out.println("Morada:");
+        String morada = scanner.nextLine();
+
+        System.out.println("Localidade:");
+        String localidade = scanner.nextLine();
+
+        System.out.println("Contacto:");
+        String contacto = scanner.nextLine();
+
+        return new Local(morada,localidade,contacto);
+
+    }
+
 }
 
 

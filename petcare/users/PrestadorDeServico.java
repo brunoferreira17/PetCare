@@ -51,7 +51,7 @@ public class PrestadorDeServico extends Utilizador
                 System.out.println("Cliente: "+ marcacao.getCliente().getNome());
                 System.out.println("Data: " + marcacao.getData());
                 System.out.println("Estado: " + marcacao.getEstado());
-                System.out.println("Descriçao: " + marcacao.getDescriçaoServico());
+                System.out.println("Descriçao: " + marcacao.getDescricaoServico());
                 counter++;
             }
         }else
@@ -62,7 +62,6 @@ public class PrestadorDeServico extends Utilizador
 
     public void editarMarcacao()
     {
-        ArrayList<Marcacao> listamarcacoes = (ArrayList<Marcacao>) getMarcacoes2();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Seleciona a Marcaçao que deseja selecionar/:");
@@ -95,7 +94,10 @@ public class PrestadorDeServico extends Utilizador
 
     public void adicionarLocal()
     {
+        Local local = Recursos.registoLocal();
+        locais.add(local);
 
+        System.out.println("Local Registado Com Sucesso!");
     }
 
 }

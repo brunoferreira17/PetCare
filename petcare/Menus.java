@@ -90,7 +90,7 @@ public class Menus
                                     ((PrestadorDeServico) useron).editarMarcacao();
                                     break;
                                 case 3:
-
+                                    ((PrestadorDeServico) useron).adicionarLocal();
                                     break;
                                 case 5:
                                     PetCareUsuarios.EditarUtilizador(useron);
