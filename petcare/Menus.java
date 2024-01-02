@@ -3,6 +3,8 @@ package petcare;
 import petcare.users.*;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
+
 
 public class Menus
 {
@@ -76,7 +78,8 @@ public class Menus
                             }
                         } while (useron != null);
                     }
-                    if (useron instanceof PrestadorDeServico) {
+                    if (useron instanceof PrestadorDeServico)
+                    {
                         do {
                             Recursos.clearScreen();
                             int optionPrestador = Menus.Prestadorpage();
@@ -99,6 +102,23 @@ public class Menus
                                 case 5:
                                     PetCareUsuarios.EditarUtilizador(useron);
                                 case 6:
+                                    useron = null;
+                                    break;
+                            }
+                        } while (useron != null);
+                    }
+                    if (useron instanceof Admin)
+                    {
+                        do {
+                            Recursos.clearScreen();
+                            int optionAdmin = Menus.Adminpage();
+
+                            switch (optionAdmin)
+                            {
+                                case 1:
+                                    PetCareUsuarios.AdicionarUtilizadorAdmin();
+                                    break;
+                                case 2:
                                     useron = null;
                                     break;
                             }
@@ -161,6 +181,36 @@ public class Menus
             System.out.println("6-Sair da Conta.");
             System.out.print("Escolha a sua opção:");
             option = scanner.nextInt();
+
+        }while (option  > 6 || option < 0);
+
+        return option;
+    }
+
+    public static int Adminpage()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("====Menu Admin====");
+            System.out.println("1-Ver Usuarios.");
+            System.out.println("2-Eliminar Usuarios.");
+            System.out.println("3-Adicionar Utilizador Admin.");
+            System.out.println("4-Alterar Informaçoes do Local.");
+            System.out.println("5-Alterar Informaçoes da Conta Pessoal.");
+            System.out.println("6-Sair da Conta.");
+            System.out.print("Escolha a sua opção:");
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
 
         }while (option  > 6 || option < 0);
 

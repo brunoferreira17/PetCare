@@ -2,8 +2,8 @@ package petcare.users;
 
 public class Admin extends Utilizador
 {
-    public Admin (String nome, String numeroCC, String numeroFiscal, String telefone, String morada, String localidade, String password)
+    public Admin (String nome, String numeroCC, String password, String numeroFiscal, String telefone, String morada, String localidade)
     {
-        super(nome, numeroCC, numeroFiscal, telefone, morada, localidade, password);
+        super(nome, numeroCC, password, numeroFiscal, telefone, morada, localidade);
     }
 }

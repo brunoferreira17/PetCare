@@ -17,6 +17,7 @@ public class Recursos
         System.out.flush();
     }
 
+
     public static Utilizador registo()
     {
         Scanner scanner = new Scanner(System.in);
@@ -121,6 +122,40 @@ public class Recursos
                 System.out.println("Registo Cancelado.");
                 return null;
         }
+
+        return novoUtilizador;
+    }
+
+    public static Utilizador registoAdmin()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        //Recolha da informaçao para Registo
+        Recursos.clearScreen();
+        System.out.println("===== Registro de Pessoa =====");
+
+        System.out.print("Nome: ");
+        String nome = scanner.nextLine();
+
+        System.out.print("Número de Cartão de Cidadão: ");
+        String numeroCC = scanner.nextLine();
+
+        System.out.print("Password para o Login: ");
+        String password = scanner.nextLine();
+
+        System.out.print("Número Fiscal: ");
+        String numeroFiscal = scanner.nextLine();
+
+        System.out.print("Telefone: ");
+        String telefone = scanner.nextLine();
+
+        System.out.print("Morada: ");
+        String morada = scanner.nextLine();
+
+        System.out.print("Localidade: ");
+        String localidade = scanner.nextLine();
+
+        Utilizador novoUtilizador = new Admin(nome,numeroCC,password,numeroFiscal,telefone,morada,localidade);
 
         return novoUtilizador;
     }

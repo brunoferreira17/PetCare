@@ -1,5 +1,7 @@
 package petcare;
 
+import petcare.users.Admin;
+
 import java.util.Scanner;
 
 public class Main
@@ -9,6 +11,8 @@ public class Main
 
         PetCareUsuarios.carregarDadosDoArquivo();
 
+        PetCareUsuarios.getUtilizadores().put("admin", new Admin("admin","admin","admin","admin","admin","admin","admin"));
+        PetCareUsuarios.getAdmins().put("admin", new Admin("admin","admin","admin","admin","admin","admin","admin"));
         Scanner scanner = new Scanner(System.in);
         boolean programa = false;
         int option;

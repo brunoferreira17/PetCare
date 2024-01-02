@@ -1,9 +1,6 @@
 package petcare;
 
-import petcare.users.Cliente;
-import petcare.users.Funcionario;
-import petcare.users.PrestadorDeServico;
-import petcare.users.Utilizador;
+import petcare.users.*;
 
 import java.io.*;
 import java.util.*;
@@ -16,12 +13,28 @@ public class PetCareUsuarios
      private static Map<String, PrestadorDeServico> prestadoresdeservico = new HashMap<>();
      //Mapa onde vao ficar apenas os usuarios Funcionarios.
      private static Map<String, Funcionario> funcionarios = new HashMap<>();
+     //Mapa onde vao ficar apenas os usuarios Clientes.
+     private static Map<String, Cliente> clientes = new HashMap<>();
+     //Mapa onde vao ficar apenas os usuarios Clientes.
+     private static Map<String, Admin> admins = new HashMap<>();
 
      //Metodo para obter Utilizadores.
+     public static Map<String, Utilizador> getUtilizadores()
+     {
+          return utilizadores;
+     }
+
      public static Map<String, PrestadorDeServico> getPrestadoresdeServico()
      {
           return prestadoresdeservico;
      }
+
+     public static Map<String, Admin> getAdmins()
+     {
+          return admins;
+     }
+
+
 
      //Metodo que Adicionará Utilizador Registado ao Mapa
      public static void AdicionarUtilizador()
@@ -36,6 +49,7 @@ public class PetCareUsuarios
                     if(novoUtilizador instanceof Cliente)
                     {
                          utilizadores.put(numeroCC, novoUtilizador);
+                         clientes.put(novoUtilizador.getNome(),(Cliente) novoUtilizador);
                          System.out.println("Usuario Registado com Sucesso!");
                     }
                     if (novoUtilizador instanceof PrestadorDeServico)
@@ -50,7 +64,33 @@ public class PetCareUsuarios
                          funcionarios.put(novoUtilizador.getNome(), (Funcionario) novoUtilizador);
                          System.out.println("Usuario Registado com Sucesso!");
                     }
+
                }else
+               {
+                    System.out.println("Ja existe um Utilizador Com Esse Numero de Cartao de Cidadao!");
+               }
+          }else
+          {
+               System.out.println("Registo Invalido!");
+          }
+     }
+
+     public static void AdicionarUtilizadorAdmin()
+     {
+          Utilizador novoUtilizador = Recursos.registoAdmin();
+
+          if(novoUtilizador != null)
+          {
+               String numeroCC = novoUtilizador.getNumeroCC();
+               if (!utilizadores.containsKey(numeroCC)) {
+                    if (novoUtilizador instanceof Admin)
+                    {
+                         utilizadores.put(numeroCC, novoUtilizador);
+                         admins.put(novoUtilizador.getNome(), (Admin) novoUtilizador);
+                         System.out.println("Usuario Registado com Sucesso!");
+                    }
+               }
+               else
                {
                     System.out.println("Ja existe um Utilizador Com Esse Numero de Cartao de Cidadao!");
                }
@@ -122,7 +162,7 @@ public class PetCareUsuarios
           {
 
                Utilizador utilizadorlogado = utilizadores.get(numeroCC);
-               
+
                if (utilizadorlogado.getPassword().equals(password))
                {
                     return  utilizadorlogado;
@@ -165,6 +205,13 @@ public class PetCareUsuarios
                          funcionarios = (Map<String, Funcionario>) data.get("funcionarios");
                     } else {
                          funcionarios = new HashMap<>();
+                    }
+
+                    if (data.containsKey("clientes") && data.get("clientes") instanceof Map<?, ?>)
+                    {
+                         clientes = (Map<String, Cliente>) data.get("clientes");
+                    } else {
+                         clientes = new HashMap<>();
                     }
                }
           } catch (FileNotFoundException e)
