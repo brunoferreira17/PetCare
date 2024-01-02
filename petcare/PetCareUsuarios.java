@@ -118,10 +118,6 @@ public class PetCareUsuarios
 
      public static Utilizador verificarLogin(String numeroCC, String password)
      {
-          Utilizador novoCliente = new Cliente("Bruno","12345","123","54321","961231","esp","apl");
-
-          utilizadores.put("12345",novoCliente);
-
           if(utilizadores.containsKey(numeroCC))
           {
 

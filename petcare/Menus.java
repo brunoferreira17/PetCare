@@ -92,6 +92,10 @@ public class Menus
                                 case 3:
                                     ((PrestadorDeServico) useron).adicionarLocal();
                                     break;
+                                case 4:
+                                    ((PrestadorDeServico) useron).mostrarLocaisSimples();
+                                    ((PrestadorDeServico) useron).editarLocal();
+                                    break;
                                 case 5:
                                     PetCareUsuarios.EditarUtilizador(useron);
                                 case 6:
@@ -222,6 +226,27 @@ public class Menus
             System.out.println("O que deseja mudar:");
             option = scanner.nextInt();
         }while (option  > 5 || option < 0);
+
+        return option;
+    }
+
+    public static int editarLocalPage()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("-----Ediçao de Local----");
+            System.out.println("1-Definir ou Alterar Morada do Local.");
+            System.out.println("2-Definir ou Alterar Localidade do Local.");
+            System.out.println("3-Definir ou Alterar Contacto do Local.");
+            System.out.println("4-Definir ou Alterar Funcionarios do Local");
+            System.out.println("5-Eliminar Local");
+            System.out.println("6-Nao alterar Nada");
+            System.out.println("O que deseja mudar:");
+            option = scanner.nextInt();
+        }while (option  > 6 || option < 0);
 
         return option;
     }

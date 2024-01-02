@@ -355,6 +355,7 @@ public class Recursos
 
                 marcacao.setServico(servicousado);
                 System.out.println("Preço Atualizado com Sucesso!");
+                break;
             case 5:
                 marcacao.setEstado("Cancelada");
                 System.out.println("Marcaçao Cancelada com Sucesso!");
@@ -387,6 +388,51 @@ public class Recursos
         return new Local(morada,localidade,contacto);
 
     }
+
+    public static Local editarLocal(Local local)
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option = Menus.editarLocalPage();
+
+        switch (option)
+        {
+            case 1:
+                System.out.println("Morada Atual: " + local.getMorada());
+                String Morada = scanner.nextLine();
+
+                local.setMorada(Morada);
+                System.out.println("Morada Alterada Com Sucesso!");
+                break;
+            case 2:
+                System.out.println("Localidade Atual: " + local.getLocalidade());
+                String Localidade = scanner.nextLine();
+
+                local.setLocalidade(Localidade);
+                System.out.println("Localidade Alterada Com Sucesso!");
+                break;
+            case 3:
+                System.out.println("Contacto Atual: " + local.getContacto());
+                String Contacto = scanner.nextLine();
+
+                local.setContacto(Contacto);
+                System.out.println("Contacto Alterado Com Sucesso!");
+                break;
+            case 4:
+                //Alterar Funcionarios do Locao ...Por Fazer..
+                break;
+            case 5:
+               return null;
+            case 6:
+                System.out.println("A voltar ao Menu....");
+                break;
+        }
+
+        return local;
+    }
+
+
+
 
 }
 

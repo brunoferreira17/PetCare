@@ -89,8 +89,30 @@ public class PrestadorDeServico extends Utilizador
                 marcacoes.set(option-1,marcacaoEditada);
             }
         }
-
     }
+
+    public void mostrarLocaisSimples()
+    {
+        ArrayList<Local> listalocais = (ArrayList<Local>) getLocais2();
+
+        if (!listalocais.isEmpty())
+        {
+            int counter = 1;
+            System.out.println("Locais do Prestador " + this.getNome() + ":" );
+            for (Local local : locais)
+            {
+                System.out.println("----Local " + counter + "----");
+                System.out.println("Morada: "+ local.getMorada());
+                System.out.println("Localidade: " + local.getLocalidade());
+                System.out.println("Contacto: " + local.getContacto());
+                counter++;
+            }
+        }else
+        {
+            System.out.println("O Prestador nao tem nenhum Local no Registo.");
+        }
+    }
+
 
     public void adicionarLocal()
     {
@@ -98,6 +120,36 @@ public class PrestadorDeServico extends Utilizador
         locais.add(local);
 
         System.out.println("Local Registado Com Sucesso!");
+    }
+
+    public void editarLocal()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Seleciona o Local que deseja selecionar/:");
+        int option = scanner.nextInt();
+
+
+
+        if(option == 0)
+        {
+            System.out.println("A voltar ao menu...");
+        }else
+        {
+            Local LocalPorEditar = locais.get(option-1);
+            Local LocalEditado;
+
+
+            LocalEditado = Recursos.editarLocal(LocalPorEditar);
+
+            if(LocalEditado == null)
+            {
+                locais.remove(LocalPorEditar);
+            }else
+            {
+                locais.set(option-1,LocalEditado);
+            }
+        }
     }
 
 }
