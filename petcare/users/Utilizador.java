@@ -1,6 +1,5 @@
 package petcare.users;
 
-import java.io.Serial;
 import java.io.Serializable;
 
 public class Utilizador implements Serializable
@@ -13,9 +12,6 @@ public class Utilizador implements Serializable
     private String telefone;
     private String morada;
     private String localidade;
-    @Serial
-    private static final long serialVersionUID = 8081405417955153719L;
-
 
     // Construtor
     public Utilizador(String nome, String numeroCC,String password, String numeroFiscal, String telefone, String morada, String localidade)
