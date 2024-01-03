@@ -19,16 +19,6 @@ public class Cliente extends Utilizador
          this.marcacoes = new ArrayList<>();
     }
 
-    public List<Marcacao> getMarcacoes()
-    {
-        return marcacoes;
-    }
-
-    public void setMarcacoes(List<Marcacao> marcacoes)
-    {
-        this.marcacoes = (ArrayList<Marcacao>) marcacoes;
-    }
-
     //Metodo para Remover Marcaçao
     public void removerMarcacao(Marcacao marcacao)
     {
@@ -80,17 +70,8 @@ public class Cliente extends Utilizador
         Marcacao novaMarcacao = Recursos.registomarcacao(this);
         marcacoes.add(novaMarcacao);
 
+        assert novaMarcacao != null;
         PrestadorDeServico prestador = novaMarcacao.getPrestadordeservico();
         prestador.marcarMarcacaoPrestador(novaMarcacao);
-
     }
-
-    /*private void inicioProgramaDados()
-     {
-          try(ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("dados")))
-          {
-               Object obj = inputStream.readObject();
-               if
-          }
-     }*/
 }

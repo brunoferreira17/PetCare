@@ -155,9 +155,7 @@ public class Recursos
         System.out.print("Localidade: ");
         String localidade = scanner.nextLine();
 
-        Utilizador novoUtilizador = new Admin(nome,numeroCC,password,numeroFiscal,telefone,morada,localidade);
-
-        return novoUtilizador;
+        return new Admin(nome,numeroCC,password,numeroFiscal,telefone,morada,localidade);
     }
 
     public static Utilizador editarUtilizador(Utilizador utilizador)

@@ -116,9 +116,14 @@ public class Menus
                             switch (optionAdmin)
                             {
                                 case 1:
-                                    PetCareUsuarios.AdicionarUtilizadorAdmin();
+                                    PetCareUsuarios.ExibirTodosUtilizadores();
                                     break;
                                 case 2:
+                                    PetCareUsuarios.RemoverUtilizador();
+                                case 3:
+                                    PetCareUsuarios.AdicionarUtilizadorAdmin();
+                                    break;
+                                case 6:
                                     useron = null;
                                     break;
                             }
@@ -155,9 +160,17 @@ public class Menus
             System.out.println("1-Ver Marcaçoes.");
             System.out.println("2-Marcar Marcaçoes.");
             System.out.println("3-Alterar Informaçoes da Conta Pessoal.");
-            System.out.println("4-Sair da Conta.");
+            System.out.println("4-Sair da Conta");
             System.out.print("Escolha a sua opção:");
-            option = scanner.nextInt();
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
 
         }while (option  > 4 || option < 0);
 
@@ -180,7 +193,15 @@ public class Menus
             System.out.println("5-Alterar Informaçoes da Conta Pessoal.");
             System.out.println("6-Sair da Conta.");
             System.out.print("Escolha a sua opção:");
-            option = scanner.nextInt();
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
 
         }while (option  > 6 || option < 0);
 
@@ -198,9 +219,7 @@ public class Menus
             System.out.println("1-Ver Usuarios.");
             System.out.println("2-Eliminar Usuarios.");
             System.out.println("3-Adicionar Utilizador Admin.");
-            System.out.println("4-Alterar Informaçoes do Local.");
-            System.out.println("5-Alterar Informaçoes da Conta Pessoal.");
-            System.out.println("6-Sair da Conta.");
+            System.out.println("4-Sair da Conta.");
             System.out.print("Escolha a sua opção:");
             do {
                 try {
@@ -212,7 +231,7 @@ public class Menus
                 }
             } while (true);
 
-        }while (option  > 6 || option < 0);
+        }while (option  > 4 || option < 0);
 
         return option;
     }
@@ -232,7 +251,15 @@ public class Menus
             System.out.println("6-Localidade");
             System.out.println("7-Nao alterar Nada");
             System.out.println("O que deseja mudar:");
-            option = scanner.nextInt();
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
         }while (option  > 7 || option < 0);
 
         return option;
@@ -252,9 +279,17 @@ public class Menus
             System.out.println("4-Definir ou Alterar Preço do Serviço");
             System.out.println("5-Cancelar Marcaçao");
             System.out.println("6-Eliminar Marcaçao");
-            System.out.println("7-Nao alterar Nada");
+            System.out.println("7-Nao alterar Nada.");
             System.out.println("O que deseja mudar:");
-            option = scanner.nextInt();
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
         }while (option  > 7 || option < 0);
 
         return option;
@@ -274,7 +309,15 @@ public class Menus
             System.out.println("4-Cancelada");
             System.out.println("5-Manter o mesmo estado");
             System.out.println("O que deseja mudar:");
-            option = scanner.nextInt();
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
         }while (option  > 5 || option < 0);
 
         return option;
@@ -295,7 +338,15 @@ public class Menus
             System.out.println("5-Eliminar Local");
             System.out.println("6-Nao alterar Nada");
             System.out.println("O que deseja mudar:");
-            option = scanner.nextInt();
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
         }while (option  > 6 || option < 0);
 
         return option;

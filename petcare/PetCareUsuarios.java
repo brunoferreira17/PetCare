@@ -34,8 +34,6 @@ public class PetCareUsuarios
           return admins;
      }
 
-
-
      //Metodo que Adicionará Utilizador Registado ao Mapa
      public static void AdicionarUtilizador()
      {
@@ -49,7 +47,7 @@ public class PetCareUsuarios
                     if(novoUtilizador instanceof Cliente)
                     {
                          utilizadores.put(numeroCC, novoUtilizador);
-                         clientes.put(novoUtilizador.getNome(),(Cliente) novoUtilizador);
+                         clientes.put(novoUtilizador.getNome(), (Cliente) novoUtilizador);
                          System.out.println("Usuario Registado com Sucesso!");
                     }
                     if (novoUtilizador instanceof PrestadorDeServico)
@@ -79,25 +77,20 @@ public class PetCareUsuarios
      {
           Utilizador novoUtilizador = Recursos.registoAdmin();
 
-          if(novoUtilizador != null)
-          {
-               String numeroCC = novoUtilizador.getNumeroCC();
-               if (!utilizadores.containsKey(numeroCC)) {
-                    if (novoUtilizador instanceof Admin)
-                    {
-                         utilizadores.put(numeroCC, novoUtilizador);
-                         admins.put(novoUtilizador.getNome(), (Admin) novoUtilizador);
-                         System.out.println("Usuario Registado com Sucesso!");
-                    }
-               }
-               else
-               {
-                    System.out.println("Ja existe um Utilizador Com Esse Numero de Cartao de Cidadao!");
-               }
-          }else
-          {
-               System.out.println("Registo Invalido!");
-          }
+         String numeroCC = novoUtilizador.getNumeroCC();
+
+         if (!utilizadores.containsKey(numeroCC)) {
+              if (novoUtilizador instanceof Admin)
+              {
+                   utilizadores.put(numeroCC, novoUtilizador);
+                   admins.put(novoUtilizador.getNome(), (Admin) novoUtilizador);
+                   System.out.println("Usuario Registado com Sucesso!");
+              }
+         }
+         else
+         {
+              System.out.println("Ja existe um Utilizador Com Esse Numero de Cartao de Cidadao!");
+         }
      }
 
      //Metodo usado para remmover Utilizadores.
@@ -108,17 +101,63 @@ public class PetCareUsuarios
           System.out.println("Insira o Numero do Cartao de Cidadao do Utilizador que deseja remover:");
           String numeroCC = scanner.nextLine();
 
-          Utilizador user = utilizadores.get(numeroCC);
-
-          if(user instanceof Cliente)
+          if(utilizadores.containsKey(numeroCC))
           {
-               utilizadores.remove(numeroCC);
-          } else if (user instanceof PrestadorDeServico)
+               Utilizador user = utilizadores.get(numeroCC);
+               if(user != null)
+               {
+                    if(user instanceof Cliente)
+                    {
+                         utilizadores.remove(numeroCC, user);
+                         clientes.remove(user.getNome(), (Cliente) user);
+                    }
+                    if (user instanceof PrestadorDeServico)
+                    {
+                         utilizadores.remove(numeroCC, user);
+                         prestadoresdeservico.remove(user.getNome(), (PrestadorDeServico) user);
+                    }
+                    if (user instanceof Funcionario)
+                    {
+                         utilizadores.remove(numeroCC, user);
+                         funcionarios.remove(user.getNome(), (Funcionario) user);
+                    }
+                    System.out.println("Utilizador Removido com Sucesso!");
+               }else
+               {
+                    System.out.println("Erro!A voltar ao Menu...");
+               }
+          }else
           {
-               utilizadores.remove(numeroCC);
-               prestadoresdeservico.remove(user.getNome());
+               System.out.println("Nao Existe Utilizador com esse Numero de Cartao de Cidadao!");
           }
-          System.out.println("Utilizador Removido com Sucesso!");
+     }
+
+     //Metodo usado para Exibir Todos os Usuarios do Sistema.
+     public static void ExibirTodosUtilizadores()
+     {
+          System.out.println("====Clientes no Sistema====");
+          for(Cliente cliente : clientes.values())
+          {
+               System.out.println("Nome: " + cliente.getNome() +  " ,Numero CC: " + cliente.getNumeroCC() + " ,Morada: " + cliente.getMorada());
+          }
+
+          System.out.println("====Prestadores de Serviço no Sistema====");
+          for(PrestadorDeServico prestador : prestadoresdeservico.values())
+          {
+               System.out.println("Nome: " + prestador.getNome() +  " ,Numero CC: " + prestador.getNumeroCC() + " ,Morada: " + prestador.getMorada());
+          }
+
+          System.out.println("====Funcionarios no Sistema====");
+          for(Funcionario funcionario : funcionarios.values())
+          {
+               System.out.println("Nome: " + funcionario.getNome() +  " ,Numero CC: " + funcionario.getNumeroCC() + " ,Morada: " + funcionario.getMorada());
+          }
+
+          System.out.println("====Admins no Sistema====");
+          for(Admin admin : admins.values())
+          {
+               System.out.println("Nome: " + admin.getNome() +  " ,Numero CC: " + admin.getNumeroCC() + " ,Morada: " + admin.getMorada());
+          }
 
      }
 
@@ -213,6 +252,13 @@ public class PetCareUsuarios
                     } else {
                          clientes = new HashMap<>();
                     }
+
+                    if (data.containsKey("admins") && data.get("admins") instanceof Map<?, ?>)
+                    {
+                         admins = (Map<String, Admin>) data.get("admins");
+                    } else {
+                         admins = new HashMap<>();
+                    }
                }
           } catch (FileNotFoundException e)
           {
@@ -220,6 +266,8 @@ public class PetCareUsuarios
                utilizadores = new HashMap<>();
                prestadoresdeservico = new HashMap<>();
                funcionarios = new HashMap<>();
+               clientes = new HashMap<>();
+               admins = new HashMap<>();
           } catch (IOException | ClassNotFoundException e)
           {
                e.printStackTrace();
@@ -232,6 +280,8 @@ public class PetCareUsuarios
           data.put("utilizadores", utilizadores);
           data.put("prestadoresdeservico", prestadoresdeservico);
           data.put("funcionarios", funcionarios);
+          data.put("clientes", clientes);
+          data.put("admins", admins);
 
           try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("dados"))) {
                outputStream.writeObject(data);
@@ -239,6 +289,4 @@ public class PetCareUsuarios
                e.printStackTrace();
           }
      }
-
-
 }

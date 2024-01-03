@@ -5,7 +5,6 @@ import petcare.users.PrestadorDeServico;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Marcacao implements Serializable
 {

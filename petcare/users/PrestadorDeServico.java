@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class PrestadorDeServico extends Utilizador
 {
-    private List<Local> locais;
+    private final List<Local> locais;
     ArrayList<Marcacao> marcacoes;
 
     public PrestadorDeServico(String nome, String numeroCC ,String password ,String numeroFiscal, String telefone, String morada, String localidade)
