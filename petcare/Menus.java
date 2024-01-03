@@ -123,7 +123,7 @@ public class Menus
                                 case 3:
                                     PetCareUsuarios.AdicionarUtilizadorAdmin();
                                     break;
-                                case 6:
+                                case 4:
                                     useron = null;
                                     break;
                             }

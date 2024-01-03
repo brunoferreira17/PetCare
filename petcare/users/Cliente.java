@@ -68,10 +68,13 @@ public class Cliente extends Utilizador
     public void marcarMarcacao()
     {
         Marcacao novaMarcacao = Recursos.registomarcacao(this);
-        marcacoes.add(novaMarcacao);
 
-        assert novaMarcacao != null;
-        PrestadorDeServico prestador = novaMarcacao.getPrestadordeservico();
-        prestador.marcarMarcacaoPrestador(novaMarcacao);
+        if(novaMarcacao != null)
+        {
+            marcacoes.add(novaMarcacao);
+
+            PrestadorDeServico prestador = novaMarcacao.getPrestadordeservico();
+            prestador.marcarMarcacaoPrestador(novaMarcacao);
+        }
     }
 }
