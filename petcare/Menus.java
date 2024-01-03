@@ -111,7 +111,7 @@ public class Menus
                     {
                         do {
                             Recursos.clearScreen();
-                            int optionAdmin = Menus.Adminpage();
+                            int optionAdmin = Menus.Funcionariopage();
 
                             switch (optionAdmin)
                             {
@@ -128,6 +128,24 @@ public class Menus
                                     break;
                             }
                         } while (useron != null);
+                    }
+                    if(useron instanceof Funcionario)
+                    {
+                        do {
+                            Recursos.clearScreen();
+                            int optionFuncionario = Menus.Adminpage();
+
+                            switch (optionFuncionario)
+                            {
+                                case 1:
+                                    System.out.println("Operaçao Nao Funcional!");
+                                    break;
+                                case 2:
+                                    useron = null;
+                                    break;
+                            }
+                        } while (useron != null);
+
                     }
 
                 }
@@ -232,6 +250,32 @@ public class Menus
             } while (true);
 
         }while (option  > 4 || option < 0);
+
+        return option;
+    }
+
+    public static int Funcionariopage()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        int option;
+        do
+        {
+            System.out.println("====Menu Funcionario====");
+            System.out.println("1-Ver Marcaçoes.");
+            System.out.println("2-Sair da Conta.");
+            System.out.print("Escolha a sua opção:");
+            do {
+                try {
+                    option = scanner.nextInt();
+                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Entrada inválida. Tente novamente.");
+                    scanner.nextLine(); // Limpar o buffer do scanner
+                }
+            } while (true);
+
+        }while (option  > 2 || option < 0);
 
         return option;
     }
