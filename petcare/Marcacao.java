@@ -97,7 +97,7 @@ public class Marcacao implements Serializable
 
     public double getPrecofinal()
     {
-        precofinal += servico.getPreco() + servico.getPrecoProdutos();
+        precofinal = servico.getPreco() + servico.getPrecoProdutos();
 
         return precofinal;
     }

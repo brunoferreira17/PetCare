@@ -2,9 +2,10 @@ package petcare;
 
 import petcare.users.Funcionario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Local
+public class Local implements Serializable
 {
     //Atributos do Local
     private String morada;

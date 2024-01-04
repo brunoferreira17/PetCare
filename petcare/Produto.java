@@ -1,8 +1,10 @@
 package petcare;
 
 
+import java.io.Serializable;
+
 //Class relativa aos Produtos usados nos Serviços
-public class Produto
+public class Produto implements Serializable
 {
     private String nome;
     private double preco;

@@ -5,7 +5,7 @@ import petcare.users.*;
 import java.io.*;
 import java.util.*;
 
-public class PetCareUsuarios
+public class PetCareUsuarios implements Serializable
 {
      //Mapa onde vao ficar todos os usuarios.
      private static Map<String, Utilizador> utilizadores = new HashMap<>();

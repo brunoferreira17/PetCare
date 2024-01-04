@@ -1,11 +1,12 @@
 package petcare;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 //Class relativa aos serviço das marcaçoes
-public class TipoServico
+public class TipoServico implements Serializable
 {
     private String descricao;
     private double preco;

@@ -64,29 +64,32 @@ public class PrestadorDeServico extends Utilizador
     {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Seleciona a Marcaçao que deseja selecionar/:");
-        int option = scanner.nextInt();
-
-        if(option == 0)
+        if(marcacoes == null)
         {
-            System.out.println("A voltar ao menu...");
-        }else
-        {
-            Marcacao marcacaoPorEditar = marcacoes.get(option-1);
-            Marcacao marcacaoEditada;
-            Cliente cliente = marcacaoPorEditar.getCliente();
+            this.mostrarMarcacoesSimples();
+        }else {
 
-            marcacaoEditada = Recursos.editarMarcacao(this,marcacaoPorEditar);
+            this.mostrarMarcacoesSimples();
+            System.out.println("Seleciona a Marcaçao que deseja selecionar/:");
+            int option = scanner.nextInt();
 
-            if(marcacaoEditada == null)
-            {
-                marcacoes.remove(marcacaoPorEditar);
-                cliente.removerMarcacao(marcacaoPorEditar);
-            }else
-            {
-                cliente.editarMarcacao(marcacaoPorEditar,marcacaoEditada);
+            if (option == 0) {
+                System.out.println("A voltar ao menu...");
+            } else {
+                Marcacao marcacaoPorEditar = marcacoes.get(option - 1);
+                Marcacao marcacaoEditada;
+                Cliente cliente = marcacaoPorEditar.getCliente();
 
-                marcacoes.set(option-1,marcacaoEditada);
+                marcacaoEditada = Recursos.editarMarcacao(this, marcacaoPorEditar);
+
+                if (marcacaoEditada == null) {
+                    marcacoes.remove(marcacaoPorEditar);
+                    cliente.removerMarcacao(marcacaoPorEditar);
+                } else {
+                    cliente.editarMarcacao(marcacaoPorEditar, marcacaoEditada);
+
+                    marcacoes.set(option - 1, marcacaoEditada);
+                }
             }
         }
     }
@@ -126,28 +129,28 @@ public class PrestadorDeServico extends Utilizador
     {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Seleciona o Local que deseja selecionar/:");
-        int option = scanner.nextInt();
-
-
-
-        if(option == 0)
+        if(locais == null)
         {
-            System.out.println("A voltar ao menu...");
-        }else
-        {
-            Local LocalPorEditar = locais.get(option-1);
-            Local LocalEditado;
+            this.mostrarLocaisSimples();
+        }else {
+            System.out.println("Seleciona o Local que deseja selecionar/:");
+            int option = scanner.nextInt();
 
 
-            LocalEditado = Recursos.editarLocal(LocalPorEditar);
+            if (option == 0) {
+                System.out.println("A voltar ao menu...");
+            } else {
+                Local LocalPorEditar = locais.get(option - 1);
+                Local LocalEditado;
 
-            if(LocalEditado == null)
-            {
-                locais.remove(LocalPorEditar);
-            }else
-            {
-                locais.set(option-1,LocalEditado);
+
+                LocalEditado = Recursos.editarLocal(LocalPorEditar);
+
+                if (LocalEditado == null) {
+                    locais.remove(LocalPorEditar);
+                } else {
+                    locais.set(option - 1, LocalEditado);
+                }
             }
         }
     }

@@ -2,11 +2,12 @@ package petcare;
 
 import petcare.users.*;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
 
-public class Menus
+public class Menus implements Serializable
 {
 
     //Metodo do Menu Inicial
@@ -89,14 +90,12 @@ public class Menus
                                     ((PrestadorDeServico) useron).mostrarMarcacoesSimples();
                                     break;
                                 case 2:
-                                    ((PrestadorDeServico) useron).mostrarMarcacoesSimples();
                                     ((PrestadorDeServico) useron).editarMarcacao();
                                     break;
                                 case 3:
                                     ((PrestadorDeServico) useron).adicionarLocal();
                                     break;
                                 case 4:
-                                    ((PrestadorDeServico) useron).mostrarLocaisSimples();
                                     ((PrestadorDeServico) useron).editarLocal();
                                     break;
                                 case 5:
@@ -111,7 +110,7 @@ public class Menus
                     {
                         do {
                             Recursos.clearScreen();
-                            int optionAdmin = Menus.Funcionariopage();
+                            int optionAdmin = Menus.Adminpage();
 
                             switch (optionAdmin)
                             {
@@ -133,7 +132,7 @@ public class Menus
                     {
                         do {
                             Recursos.clearScreen();
-                            int optionFuncionario = Menus.Adminpage();
+                            int optionFuncionario = Menus.Funcionariopage();
 
                             switch (optionFuncionario)
                             {

@@ -25,7 +25,6 @@ public class Recursos
         int tipousario;
 
         //Recolha da informaçao para Registo
-        Recursos.clearScreen();
         System.out.println("===== Registro de Pessoa =====");
 
         System.out.print("Nome: ");
@@ -131,7 +130,6 @@ public class Recursos
         Scanner scanner = new Scanner(System.in);
 
         //Recolha da informaçao para Registo
-        Recursos.clearScreen();
         System.out.println("===== Registro de Pessoa =====");
 
         System.out.print("Nome: ");
@@ -269,19 +267,24 @@ public class Recursos
 
        validacao = false;
 
-       do
-       {
-           try {
-               System.out.println("Escolha o Dia da Marcaçao(dd-MM-yyyy)");
-               String dataescolhida = scanner.nextLine();
+        do {
+            try {
+                System.out.println("Escolha o Dia da Marcaçao (dd-MM-yyyy)");
+                String dataescolhida = scanner.nextLine();
 
-               data = LocalDate.parse(dataescolhida,formatter);
+                data = LocalDate.parse(dataescolhida, formatter);
 
-               validacao = true;
-           } catch (Exception e) {
-               System.out.println("Formato de data inválido.");
-           }
-       }while (!validacao);
+                // Verificação da data
+                if (data.isBefore(LocalDate.now()))
+                {
+                    throw new IllegalArgumentException("A data escolhida deve ser posterior à data atual.");
+                }
+
+                validacao = true;
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido ou data anterior à atual. Tente novamente.");
+            }
+        } while (!validacao);
 
        System.out.println("Escreva o Serviço que quer:");
        String servico = scanner.nextLine();
@@ -364,10 +367,10 @@ public class Recursos
 
                 System.out.println("Qual o Valor do Produto:");
                 double precoproduto = scanner.nextDouble();
+                Produto produtousado = new Produto(null,0);
 
                 if(nomeproduto != null)
                 {
-                    Produto produtousado = null;
                     produtousado.setNome(nomeproduto);
                     produtousado.setPreco(precoproduto);
 
