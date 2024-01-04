@@ -74,6 +74,9 @@ public class Menus implements Serializable
                                     PetCareUsuarios.EditarUtilizador(useron);
                                     break;
                                 case 4:
+                                    ((Cliente) useron).pagarMarcacao();
+                                    break;
+                                case 5:
                                     useron = null;
                                     break;
                             }
@@ -177,7 +180,8 @@ public class Menus implements Serializable
             System.out.println("1-Ver Marcaçoes.");
             System.out.println("2-Marcar Marcaçoes.");
             System.out.println("3-Alterar Informaçoes da Conta Pessoal.");
-            System.out.println("4-Sair da Conta");
+            System.out.println("4-Pagar Marcaçao.");
+            System.out.println("5-Sair da Conta");
             System.out.print("Escolha a sua opção:");
             do {
                 try {
@@ -189,7 +193,7 @@ public class Menus implements Serializable
                 }
             } while (true);
 
-        }while (option  > 4 || option < 0);
+        }while (option  > 5 || option < 0);
 
         return option;
     }

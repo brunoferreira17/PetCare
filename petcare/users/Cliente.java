@@ -6,6 +6,7 @@ import petcare.Recursos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Cliente extends Utilizador
@@ -26,7 +27,7 @@ public class Cliente extends Utilizador
     }
 
     //Metodo para Editar Marcaçao
-    public void editarMarcacao(Marcacao velhaMarcacao, Marcacao novaMarcacao)
+    public void editarMarcacaoFinal(Marcacao velhaMarcacao, Marcacao novaMarcacao)
     {
         int pos = 0;
         for(Marcacao marcacao : marcacoes)
@@ -53,10 +54,12 @@ public class Cliente extends Utilizador
         if (!listamarcacoes.isEmpty())
         {
             System.out.println("Marcações do Cliente:");
-            for (Marcacao marcacao : marcacoes) {
+            int counter = 1;
+            for (Marcacao marcacao : marcacoes)
+            {
+                System.out.println("====Marcaçao " + counter + "====");
                 System.out.println("Data: " + marcacao.getData());
                 System.out.println("Estado: " + marcacao.getEstado());
-                System.out.println("-----------------------");
             }
         }else
         {
@@ -75,6 +78,37 @@ public class Cliente extends Utilizador
 
             PrestadorDeServico prestador = novaMarcacao.getPrestadordeservico();
             prestador.marcarMarcacaoPrestador(novaMarcacao);
+        }
+    }
+
+    //Metodo para Pagar Marcaçoes
+    public void pagarMarcacao()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        if(marcacoes == null)
+        {
+            this.mostrarMarcacoesSimples();
+        }else {
+
+            this.mostrarMarcacoesSimples();
+            System.out.println("Seleciona a Marcaçao que deseja Pagar:");
+            int option = scanner.nextInt();
+
+            if (option == 0 && option > marcacoes.size()) {
+                System.out.println("A voltar ao menu...");
+            } else {
+                Marcacao marcacaoPorPagar = marcacoes.get(option - 1);
+                Marcacao marcacaoPaga = marcacaoPorPagar;
+
+                PrestadorDeServico prestador = marcacaoPorPagar.getPrestadordeservico();
+
+                marcacaoPaga.setEstado("Pago!");
+
+                prestador.editarMarcacaoFinal(marcacaoPorPagar, marcacaoPaga);
+
+                marcacoes.set(option - 1, marcacaoPaga);
+            }
         }
     }
 }

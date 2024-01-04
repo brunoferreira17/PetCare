@@ -36,6 +36,12 @@ public class PrestadorDeServico extends Utilizador
         return new ArrayList<>(locais);
     }
 
+    //Metodo para Remover Marcaçao
+    public void removerMarcacao(Marcacao marcacao)
+    {
+        this.marcacoes.remove(marcacao);
+    }
+
 
     public void mostrarMarcacoesSimples()
     {
@@ -70,7 +76,7 @@ public class PrestadorDeServico extends Utilizador
         }else {
 
             this.mostrarMarcacoesSimples();
-            System.out.println("Seleciona a Marcaçao que deseja selecionar/:");
+            System.out.println("Seleciona a Marcaçao que deseja selecionar:");
             int option = scanner.nextInt();
 
             if (option == 0) {
@@ -86,11 +92,24 @@ public class PrestadorDeServico extends Utilizador
                     marcacoes.remove(marcacaoPorEditar);
                     cliente.removerMarcacao(marcacaoPorEditar);
                 } else {
-                    cliente.editarMarcacao(marcacaoPorEditar, marcacaoEditada);
+                    cliente.editarMarcacaoFinal(marcacaoPorEditar, marcacaoEditada);
 
                     marcacoes.set(option - 1, marcacaoEditada);
                 }
             }
+        }
+    }
+
+    public void editarMarcacaoFinal(Marcacao velhaMarcacao, Marcacao novaMarcacao)
+    {
+        int pos = 0;
+        for(Marcacao marcacao : marcacoes)
+        {
+            if(marcacao.equals(velhaMarcacao))
+            {
+                marcacoes.set(pos,novaMarcacao);
+            }
+            pos++;
         }
     }
 

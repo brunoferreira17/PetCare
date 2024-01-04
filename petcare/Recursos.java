@@ -241,29 +241,66 @@ public class Recursos
 
         String prestadorescolhido;
 
-       do
-       {
-           for (String prestador : prestadores.keySet()) {
-               System.out.println("->" + prestador);
-           }
 
-           System.out.println("Escolha o Prestador de Serviço(Nome) para o Serviço ou escreva 'Cancelar' para cancelar a marcaçao:");
-           prestadorescolhido = scanner.nextLine();
 
-           if (prestadorescolhido.equalsIgnoreCase("cancelar")) {
-               System.out.println("Marcaçao Cancelada");
-               return null;
-           }
+        do
+        {
+            for (String prestador : prestadores.keySet()) {
+                System.out.println("->" + prestador);
+            }
 
-           if(prestadores.containsKey(prestadorescolhido))
-           {
-               validacao = true;
-           }else
-           {
-               System.out.println("Nao Existe Prestador com esse Nome!");
-           }
-       }while (!validacao);
+            System.out.println("Escolha o Prestador de Serviço(Nome) para o Serviço ou escreva 'Cancelar' para cancelar a marcaçao:");
+            prestadorescolhido = scanner.nextLine();
 
+            if (prestadorescolhido.equalsIgnoreCase("cancelar")) {
+                System.out.println("Marcaçao Cancelada");
+                return null;
+            }
+
+            if(prestadores.containsKey(prestadorescolhido))
+            {
+                validacao = true;
+            }else
+            {
+                System.out.println("Nao Existe Prestador com esse Nome!");
+            }
+        }while (!validacao);
+
+        ArrayList<Local> locaisprestador = (ArrayList<Local>) prestadores.get(prestadorescolhido).getLocais2();
+
+        int localescolhido;
+
+        validacao = false;
+
+        do
+        {
+            if(!locaisprestador.isEmpty())
+            {
+                int counter = 1;
+
+                for (Local local : locaisprestador) {
+                    System.out.println("====Local " + counter + "====" );
+                    System.out.println("Morada: " + local.getMorada());
+                    System.out.println("Contacto: " + local.getContacto());
+                }
+            }else
+            {
+                System.out.println("Este Prestador Nao tem Locais no Seu Registo. Marcaçao Cancelada!");
+                return null;
+            }
+
+            System.out.println("Qual local deseja selecionar o Serviço");
+            localescolhido = scanner.nextInt();
+
+            if (localescolhido >= 1 && localescolhido <= locaisprestador.size())
+            {
+                validacao = true;
+            } else
+            {
+                System.out.println("Índice inválido. Tente novamente.");
+            }
+
+        }while (!validacao);
 
        validacao = false;
 
@@ -293,7 +330,7 @@ public class Recursos
 
        System.out.println("Marcaçao Feita!");
 
-        return new Marcacao(Cliente,prestadores.get(prestadorescolhido), null ,data ,servicoescolhido ,"Pendente de Confirmaçao", 0);
+        return new Marcacao(Cliente,prestadores.get(prestadorescolhido), locaisprestador.get(localescolhido-1) ,data ,servicoescolhido ,"Pendente de Confirmaçao", 0);
     }
 
     public static Marcacao editarMarcacao(PrestadorDeServico prestador,Marcacao marcacao)
